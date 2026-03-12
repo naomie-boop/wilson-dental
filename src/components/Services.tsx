@@ -6,18 +6,18 @@ import { Wrench, Baby, HeartPulse, ScanFace, AlertCircle } from "lucide-react";
 const anim = { initial: { y: 15 }, whileInView: { y: 0 }, viewport: { once: true, margin: "-50px" as const }, transition: { duration: 0.5 } };
 
 const services = [
-  { icon: Baby, title: "Pédodontie", description: "Spécialistes des soins pour enfants et ados. Un cadre ludique et rassurant pour les plus jeunes.",
-    items: ["Première Visite de l'Enfant", "Prévention & Fluoration", "Scellement des Sillons", "Soins des Dents de Lait", "Orthodontie Enfant & Ado"],
-    iconBg: "bg-pink-500/15 text-pink-600", dot: "bg-pink-500", badge: "Spécialité famille" },
+  { icon: ScanFace, title: "Chirurgie & Implantologie", description: "Notre spécialité phare. Implants, greffes osseuses et gingivales, chirurgie planifiée et guidée grâce à l'impression 3D.",
+    items: ["Implants Dentaires", "Greffes Osseuses & Gingivales", "Chirurgie Guidée 3D", "Extractions & Dents de Sagesse", "Prothèses sur Implants", "Sinus Lift"],
+    iconBg: "bg-emerald-500/15 text-emerald-600", dot: "bg-emerald-500", badge: "Spécialité phare" },
   { icon: HeartPulse, title: "Parodontologie", description: "Expertise reconnue dans le traitement des maladies des gencives. De nombreux patients nous font confiance.",
     items: ["Bilan Parodontal", "Surfaçage Radiculaire", "Traitement de la Gingivite", "Traitement de la Parodontite", "Chirurgie Parodontale", "Greffes Gingivales"],
     iconBg: "bg-red-500/15 text-red-600", dot: "bg-red-500", badge: "Expertise reconnue" },
-  { icon: Wrench, title: "Soins Conservateurs", description: "Technologies numériques de pointe : imprimante 3D, empreintes digitales, outils numérisés.",
-    items: ["Traitement des Caries", "Détartrage Professionnel", "Endodontie", "Couronnes Dentaires", "Inlays & Onlays", "Éclaircissement Dentaire"],
+  { icon: Baby, title: "Pédodontie", description: "Le Dr Bonnet dédie son exercice exclusivement aux soins des enfants. Un cadre ludique et rassurant.",
+    items: ["Première Visite de l'Enfant", "Prévention & Fluoration", "Scellement des Sillons", "Soins des Dents de Lait", "Orthodontie Enfant & Ado"],
+    iconBg: "bg-pink-500/15 text-pink-600", dot: "bg-pink-500", badge: "Spécialité famille" },
+  { icon: Wrench, title: "Soins & Esthétique", description: "Flux 100% numérique : caméra optique, scanner 3D, imprimante 3D. Infiltration de taches blanches, facettes, éclaircissement.",
+    items: ["Infiltration Taches Blanches (Icon)", "Couronnes & Inlays-Onlays", "Éclaircissement Dentaire", "Prothèses Amovibles & Fixes", "Détartrage Professionnel", "Endodontie"],
     iconBg: "bg-blue-500/15 text-blue-600", dot: "bg-blue-500", badge: null },
-  { icon: ScanFace, title: "Chirurgie & Implantologie", description: "Implants, greffes et chirurgie orale avec des équipements de dernière génération.",
-    items: ["Implants Dentaires", "Greffes Osseuses", "Extractions & Dents de Sagesse", "Chirurgie Pré-implantaire", "Prothèses sur Implants", "Sinus Lift"],
-    iconBg: "bg-emerald-500/15 text-emerald-600", dot: "bg-emerald-500", badge: null },
 ];
 
 export default function Services() {
