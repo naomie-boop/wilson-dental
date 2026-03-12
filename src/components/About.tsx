@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { Stethoscope, Sparkles, Baby, Syringe } from "lucide-react";
 import Image from "next/image";
 import GlassButton from "./GlassButton";
+import TextFluxUnveil from "./TextFluxUnveil";
 
 export default function About() {
   const ref = useRef(null);
@@ -33,20 +34,14 @@ export default function About() {
                 className="h-48 w-full object-cover sm:h-64" />
             </div>
 
-            <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Wilson Dental est fier de fournir des soins dentaires de haute
-              qualité avec les dernières avancées technologiques.
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Nos dentistes offrent une gamme complète de soins, allant de la
-              dentisterie pédiatrique à la chirurgie dentaire avancée.
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Wilson Dental est un cabinet dentaire libéral situé au 57 rue du
-              Président Wilson à Levallois-Perret. Nous offrons des soins
-              dentaires selon les dernières données acquises de la science dans
-              une atmosphère moderne et relaxante.
-            </p>
+            <TextFluxUnveil
+              text="Wilson Dental est fier de fournir des soins dentaires de haute qualité avec les dernières avancées technologiques. Nos dentistes offrent une gamme complète de soins, allant de la dentisterie pédiatrique à la chirurgie dentaire avancée. Wilson Dental est un cabinet dentaire libéral situé au 57 rue du Président Wilson à Levallois-Perret. Nous offrons des soins dentaires selon les dernières données acquises de la science dans une atmosphère moderne et relaxante."
+              tag="p"
+              className="text-base leading-relaxed text-muted-foreground sm:text-lg"
+              startFromWord={1}
+              initialOpacity={0.12}
+              fullRevealDistance={300}
+            />
 
             <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">
               <GlassButton href="#services" variant="primary" size="md">

@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import GlowCard from "./GlowCard";
+import TextFluxUnveil from "./TextFluxUnveil";
 
 const photos = [
   { src: "/cabinet-reception.png", alt: "Accueil du cabinet Wilson Dental", label: "Accueil", span: "col-span-2 row-span-2" },
@@ -24,7 +25,14 @@ export default function Cabinet() {
             Un espace moderne <span className="text-primary">et apaisant</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
-            Découvrez nos locaux entièrement rénovés avec des équipements de dernière génération.
+            <TextFluxUnveil
+              text="Découvrez nos locaux entièrement rénovés avec des équipements de dernière génération pour votre confort et votre sécurité."
+              tag="span"
+              className="text-base text-muted-foreground sm:text-lg"
+              startFromWord={1}
+              initialOpacity={0.12}
+              fullRevealDistance={200}
+            />
           </p>
         </motion.div>
 
