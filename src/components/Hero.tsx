@@ -5,6 +5,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import GlassButton from "./GlassButton";
 import GlowCard from "./GlowCard";
+import RollingText from "./RollingText";
 
 const DOCTOLIB = "https://www.doctolib.fr/cabinet-dentaire/levallois-perret/cabinet-dentaire-wilson/booking/motive-categories?telehealth=false&specialityId=1&placeId=practice-543908&pid=practice-543908&speciality_ids%5B%5D=1&source=deep_link";
 
@@ -24,7 +25,13 @@ export default function Hero() {
           <h1 className="font-[family-name:var(--font-playfair)] text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
             Bienvenue au cabinet{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Wilson Dental
+              <RollingText
+                text="Wilson Dental"
+                rollDuration={1.6}
+                staggerDelay={0.07}
+                blurIntensity={5}
+                pattern="alternating"
+              />
             </span>
           </h1>
 
