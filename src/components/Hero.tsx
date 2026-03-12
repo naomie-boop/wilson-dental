@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, ShieldCheck, Clock, Baby } from "lucide-react";
+import { ArrowRight, Sparkles, ShieldCheck, Clock, Baby, Globe } from "lucide-react";
 import Image from "next/image";
 import GlassButton from "./GlassButton";
 import GlowCard from "./GlowCard";
@@ -46,6 +46,10 @@ export default function Hero() {
             <span className="flex items-center gap-1.5">
               <Baby className="h-3.5 w-3.5 text-primary" />
               Enfants bienvenus
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Globe className="h-3.5 w-3.5 text-primary" />
+              FR · EN · ES
             </span>
           </div>
 
