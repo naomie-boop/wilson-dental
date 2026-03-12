@@ -10,10 +10,12 @@ import Contact from "@/components/Contact";
 import DoctorNote from "@/components/DoctorNote";
 import Footer from "@/components/Footer";
 import FluidGradient from "@/components/FluidGradient";
+import PageLoader from "@/components/PageLoader";
 
 export default function Home() {
   return (
     <>
+      <PageLoader />
       <FluidGradient />
       <Navbar />
       <Hero />
