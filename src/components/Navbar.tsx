@@ -2,13 +2,22 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import Image from "next/image";
 
 const navLinks = [
   { label: "Accueil", href: "#hero" },
   { label: "À propos", href: "#about" },
-  { label: "Soins", href: "#services" },
+  {
+    label: "Soins",
+    href: "#services",
+    dropdown: [
+      { label: "Soins Conservateurs", href: "#services", color: "#3b82f6" },
+      { label: "Dentisterie Pédiatrique", href: "#services", color: "#ec4899" },
+      { label: "Parodontologie", href: "#services", color: "#ef4444" },
+      { label: "Chirurgie & Implantologie", href: "#services", color: "#10b981" },
+    ],
+  },
   { label: "Équipe", href: "#team" },
   { label: "Témoignages", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
@@ -17,6 +26,7 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -25,90 +35,208 @@ export default function Navbar() {
   }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-white/40 backdrop-blur-2xl shadow-[0_4px_30px_rgba(0,0,0,0.06)] border-b border-white/30"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between sm:h-20">
-          <a href="#hero" className="flex items-center gap-2 sm:gap-3">
-            <Image src="/logo-icon.png" alt="Wilson Dental" width={36} height={36} className="h-8 w-8 sm:h-9 sm:w-9" />
-            <Image src="/logo-horizontal.png" alt="Wilson Dental" width={140} height={40} className="hidden h-8 w-auto sm:block" />
+    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4">
+      <motion.nav
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={`w-full max-w-5xl transition-all duration-500 ${
+          scrolled ? "max-w-4xl" : "max-w-5xl"
+        }`}
+        style={{
+          borderRadius: 16,
+          background: "rgba(255, 255, 255, 0.75)",
+          backdropFilter: "blur(24px) saturate(1.8)",
+          WebkitBackdropFilter: "blur(24px) saturate(1.8)",
+          border: "1px solid rgba(255, 255, 255, 0.5)",
+          boxShadow:
+            "0px 0.6px 0.6px -1.25px rgba(0, 0, 0, 0.18), 0px 2.3px 2.3px -2.5px rgba(0, 0, 0, 0.16), 0px 10px 10px -3.75px rgba(0, 0, 0, 0.06)",
+        }}
+      >
+        <div className="flex h-14 items-center justify-between px-4 sm:h-16 sm:px-5">
+          {/* Logo */}
+          <a href="#hero" className="flex items-center gap-2">
+            <Image
+              src="/logo-icon.png"
+              alt="Wilson Dental"
+              width={28}
+              height={28}
+              className="h-6 w-6 sm:h-7 sm:w-7"
+            />
+            <Image
+              src="/logo-horizontal.png"
+              alt="Wilson Dental"
+              width={120}
+              height={35}
+              className="hidden h-6 w-auto sm:block"
+            />
           </a>
 
+          {/* Desktop links */}
           <div className="hidden items-center gap-0.5 lg:flex">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="rounded-xl px-3 py-2 text-sm font-medium text-foreground/70 transition-all duration-300 hover:bg-white/30 hover:text-foreground hover:backdrop-blur-md xl:px-4"
+              <div
+                key={link.label}
+                className="relative"
+                onMouseEnter={() =>
+                  link.dropdown && setActiveDropdown(link.label)
+                }
+                onMouseLeave={() => setActiveDropdown(null)}
               >
-                {link.label}
-              </a>
+                <a
+                  href={link.href}
+                  className="flex items-center gap-1 rounded-xl px-3 py-2 text-[13px] font-medium text-foreground/65 transition-all duration-200 hover:bg-black/[0.04] hover:text-foreground"
+                >
+                  {link.label}
+                  {link.dropdown && (
+                    <ChevronDown className="h-3 w-3 opacity-50" />
+                  )}
+                </a>
+
+                {/* Dropdown */}
+                <AnimatePresence>
+                  {link.dropdown && activeDropdown === link.label && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 6, scale: 0.97 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 6, scale: 0.97 }}
+                      transition={{ duration: 0.15, ease: "easeOut" }}
+                      className="absolute left-0 top-full z-50 pt-2"
+                    >
+                      <div
+                        className="w-56 overflow-hidden rounded-xl p-1.5"
+                        style={{
+                          background: "rgba(255, 255, 255, 0.85)",
+                          backdropFilter: "blur(24px) saturate(1.8)",
+                          WebkitBackdropFilter: "blur(24px) saturate(1.8)",
+                          border: "1px solid rgba(255, 255, 255, 0.5)",
+                          boxShadow:
+                            "0px 0.6px 0.6px -1.25px rgba(0, 0, 0, 0.18), 0px 2.3px 2.3px -2.5px rgba(0, 0, 0, 0.16), 0px 10px 10px -3.75px rgba(0, 0, 0, 0.06)",
+                        }}
+                      >
+                        {link.dropdown.map((item) => (
+                          <a
+                            key={item.label}
+                            href={item.href}
+                            className="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-[13px] font-medium text-foreground/70 transition-all hover:bg-black/[0.04] hover:text-foreground"
+                          >
+                            <div
+                              className="h-2 w-2 rounded-full"
+                              style={{ backgroundColor: item.color }}
+                            />
+                            {item.label}
+                          </a>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             ))}
           </div>
 
-          <div className="hidden items-center gap-3 lg:flex">
+          {/* Desktop right side */}
+          <div className="hidden items-center gap-2 lg:flex">
             <a
               href="tel:+33147375316"
-              className="flex items-center gap-2 text-sm font-medium text-foreground/60 transition-colors hover:text-foreground"
+              className="flex items-center gap-1.5 rounded-xl px-3 py-2 text-[13px] font-medium text-foreground/50 transition-all hover:text-foreground"
             >
-              <Phone className="h-4 w-4" />
+              <Phone className="h-3.5 w-3.5" />
               <span className="hidden xl:inline">+33 1 47 37 53 16</span>
             </a>
             <a
               href="#contact"
-              className="rounded-2xl border border-white/30 bg-primary/60 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-xl transition-all duration-500 hover:bg-primary/80 hover:shadow-[0_8px_24px_-6px_rgba(37,99,235,0.4)] hover:-translate-y-0.5"
+              className="rounded-xl px-4 py-2 text-[13px] font-semibold text-white transition-all duration-300 hover:-translate-y-px"
               style={{
-                boxShadow: "0 4px 16px -4px rgba(37,99,235,0.2), inset 0 1px 1px 0 rgba(255,255,255,0.2)",
+                background: "rgba(37, 99, 235, 0.85)",
+                boxShadow:
+                  "0px 0.6px 0.6px -1.25px rgba(37, 99, 235, 0.3), 0px 2.3px 2.3px -2.5px rgba(37, 99, 235, 0.25), 0px 8px 8px -3.75px rgba(37, 99, 235, 0.12), inset 0 1px 0 rgba(255,255,255,0.15)",
               }}
             >
               Prendre RDV
             </a>
           </div>
 
-          <button onClick={() => setIsOpen(!isOpen)} className="rounded-xl p-2 text-foreground backdrop-blur-md lg:hidden" aria-label="Menu">
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {/* Mobile burger */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="rounded-xl p-2 text-foreground/70 transition-colors hover:bg-black/[0.04] lg:hidden"
+            aria-label="Menu"
+          >
+            {isOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
           </button>
         </div>
-      </div>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-t border-white/20 bg-white/50 backdrop-blur-2xl lg:hidden"
-          >
-            <div className="space-y-1 px-4 py-4">
-              {navLinks.map((link) => (
-                <a key={link.href} href={link.href} onClick={() => setIsOpen(false)}
-                  className="block rounded-xl px-4 py-3 text-base font-medium text-foreground/70 transition-all hover:bg-white/40 hover:text-foreground">
-                  {link.label}
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="overflow-hidden border-t border-black/[0.06] lg:hidden"
+            >
+              <div className="space-y-0.5 px-3 py-3">
+                {navLinks.map((link) => (
+                  <div key={link.label}>
+                    <a
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className="block rounded-xl px-3 py-2.5 text-[15px] font-medium text-foreground/70 transition-all hover:bg-black/[0.04] hover:text-foreground"
+                    >
+                      {link.label}
+                    </a>
+                    {link.dropdown && (
+                      <div className="ml-4 space-y-0.5">
+                        {link.dropdown.map((item) => (
+                          <a
+                            key={item.label}
+                            href={item.href}
+                            onClick={() => setIsOpen(false)}
+                            className="flex items-center gap-2 rounded-lg px-3 py-2 text-[13px] text-foreground/50 transition-all hover:text-foreground"
+                          >
+                            <div
+                              className="h-1.5 w-1.5 rounded-full"
+                              style={{ backgroundColor: item.color }}
+                            />
+                            {item.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+                <a
+                  href="tel:+33147375316"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-[15px] font-medium text-foreground/70"
+                >
+                  <Phone className="h-4 w-4" /> +33 1 47 37 53 16
                 </a>
-              ))}
-              <a href="tel:+33147375316" onClick={() => setIsOpen(false)}
-                className="flex items-center gap-2 rounded-xl px-4 py-3 text-base font-medium text-foreground/70">
-                <Phone className="h-4 w-4" /> +33 1 47 37 53 16
-              </a>
-              <div className="pt-2">
-                <a href="#contact" onClick={() => setIsOpen(false)}
-                  className="block w-full rounded-2xl bg-primary/60 py-3 text-center text-base font-semibold text-white backdrop-blur-xl border border-white/20"
-                  style={{ boxShadow: "inset 0 1px 1px 0 rgba(255,255,255,0.2)" }}>
-                  Prendre Rendez-vous
-                </a>
+                <div className="pt-1">
+                  <a
+                    href="#contact"
+                    onClick={() => setIsOpen(false)}
+                    className="block w-full rounded-xl py-3 text-center text-[15px] font-semibold text-white"
+                    style={{
+                      background: "rgba(37, 99, 235, 0.85)",
+                      boxShadow:
+                        "inset 0 1px 0 rgba(255,255,255,0.15), 0px 2px 4px rgba(37,99,235,0.2)",
+                    }}
+                  >
+                    Prendre Rendez-vous
+                  </a>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
+    </div>
   );
 }
