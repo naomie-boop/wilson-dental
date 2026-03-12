@@ -7,11 +7,11 @@ import ParallaxMarquee from "./ParallaxMarquee";
 const marqueeCards = [
   { src: "/cabinet-reception.png", alt: "Accueil Wilson Dental", depth: 0, yOffset: -40 },
   { src: "/cabinet-salle2.png", alt: "Salle de soins", depth: 80, yOffset: 50 },
-  { src: "/hero-surgery.png", alt: "En soin", depth: -30, yOffset: -20 },
+  { src: "/cabinet-attente.png", alt: "Salle d'attente", depth: -30, yOffset: -20 },
   { src: "/cabinet-salle1.png", alt: "Consultation", depth: 60, yOffset: 70 },
-  { src: "/dr-ohayon.png", alt: "Dr. Ohayon", depth: -50, yOffset: -60 },
-  { src: "/cabinet-reception.png", alt: "Accueil", depth: 100, yOffset: 30 },
-  { src: "/cabinet-salle2.png", alt: "Salle de soins 2", depth: 20, yOffset: -30 },
+  { src: "/cabinet-carte.png", alt: "Carte de visite Wilson Dental", depth: -50, yOffset: -60 },
+  { src: "/hero-surgery.png", alt: "Équipe en soin", depth: 100, yOffset: 30 },
+  { src: "/cabinet-salle3.png", alt: "Fauteuil de soins", depth: 20, yOffset: -30 },
 ];
 
 const assistants = [
