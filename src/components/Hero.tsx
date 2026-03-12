@@ -5,6 +5,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import GlassButton from "./GlassButton";
 import TextCarousel from "./TextCarousel";
+import GlowCard from "./GlowCard";
 
 export default function Hero() {
   return (
@@ -73,9 +74,11 @@ export default function Hero() {
         >
           <div className="relative mx-auto max-w-lg lg:max-w-none">
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/15 to-accent/15 blur-2xl" />
-            <div
-              className="relative overflow-hidden rounded-2xl border border-white/25 sm:rounded-3xl"
-              style={{ boxShadow: "0 16px 48px -12px rgba(0,0,0,0.12), inset 0 1px 1px rgba(255,255,255,0.3)" }}
+            <GlowCard
+              glowColor="rgba(37, 99, 235, 0.7)"
+              glowSize={300}
+              borderRadius={24}
+              borderWidth={2}
             >
               <Image
                 src="/cabinet-reception.png"
@@ -86,7 +89,7 @@ export default function Hero() {
                 className="h-[280px] w-full object-cover sm:h-[380px] lg:h-[460px]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-white/5" />
-            </div>
+            </GlowCard>
 
             <motion.div
               animate={{ y: [0, -10, 0] }}

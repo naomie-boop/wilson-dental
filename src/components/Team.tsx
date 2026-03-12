@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { GraduationCap, Heart, Award, Microscope } from "lucide-react";
 import Image from "next/image";
+import GlowCard from "./GlowCard";
 
 const team = [
   {
@@ -47,30 +48,29 @@ export default function Team() {
         <div className="mt-10 grid gap-6 sm:mt-16 sm:gap-8 md:grid-cols-2">
           {team.map((member, i) => (
             <motion.div key={member.name} initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}>
-              <div
-                className="group h-full overflow-hidden rounded-2xl border border-white/25 bg-white/10 backdrop-blur-xl transition-all duration-500 hover:bg-white/18 hover:-translate-y-1 sm:rounded-3xl"
-                style={{ boxShadow: "0 8px 32px -8px rgba(0,0,0,0.08), inset 0 1px 1px rgba(255,255,255,0.3)" }}
-              >
-                <div className="relative h-72 overflow-hidden sm:h-80">
-                  <Image src={member.image} alt={member.name} fill className="object-cover object-top transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-white/5" />
-                </div>
-                <div className="p-5 sm:p-8">
-                  <h3 className="text-xl font-bold text-foreground sm:text-2xl">{member.name}</h3>
-                  <p className="font-semibold text-primary">{member.role}</p>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:text-base">{member.description}</p>
-                  <div className="mt-4 space-y-2 sm:mt-6 sm:space-y-3">
-                    {member.traits.map((trait) => (
-                      <div key={trait.label} className="flex items-center gap-3 text-sm text-muted-foreground">
-                        <div className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/20 bg-primary/10 backdrop-blur-md">
-                          <trait.icon className="h-3.5 w-3.5 text-primary" />
+              <GlowCard glowColor="rgba(37, 99, 235, 0.6)" glowSize={280} borderRadius={24} borderWidth={2}>
+                <div className="group h-full bg-white/10 backdrop-blur-xl">
+                  <div className="relative h-72 overflow-hidden sm:h-80">
+                    <Image src={member.image} alt={member.name} fill className="object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-white/5" />
+                  </div>
+                  <div className="p-5 sm:p-8">
+                    <h3 className="text-xl font-bold text-foreground sm:text-2xl">{member.name}</h3>
+                    <p className="font-semibold text-primary">{member.role}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:text-base">{member.description}</p>
+                    <div className="mt-4 space-y-2 sm:mt-6 sm:space-y-3">
+                      {member.traits.map((trait) => (
+                        <div key={trait.label} className="flex items-center gap-3 text-sm text-muted-foreground">
+                          <div className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/20 bg-primary/10 backdrop-blur-md">
+                            <trait.icon className="h-3.5 w-3.5 text-primary" />
+                          </div>
+                          {trait.label}
                         </div>
-                        {trait.label}
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </GlowCard>
             </motion.div>
           ))}
         </div>
