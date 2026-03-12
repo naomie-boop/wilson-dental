@@ -11,7 +11,7 @@ const doctors = [
     name: "Dr. David Ohayon",
     role: "Chirurgien-Dentiste",
     image: "/dr-ohayon.png",
-    description: "Minutieux, doux, à l'écoute et très pédagogue, le Dr Ohayon prend le temps de tout expliquer et de rassurer. Passionné et perfectionniste, il met son expertise au service de votre sourire.",
+    description: "Minutieux, doux, à l'écoute et très pédagogue. Passionné et perfectionniste, il met son expertise au service de votre sourire.",
     traits: [
       { icon: GraduationCap, label: "Chirurgien-Dentiste diplômé" },
       { icon: Heart, label: "Doux, chaleureux et pédagogue" },
@@ -22,13 +22,19 @@ const doctors = [
     name: "Chirurgien-Dentiste",
     role: "Associé",
     image: "/dr-2.png",
-    description: "Rigoureux et attentif, il complète l'équipe avec son savoir-faire pour une prise en charge globale et de qualité au cabinet Wilson Dental.",
+    description: "Rigoureux et attentif, il complète l'équipe pour une prise en charge globale et de qualité.",
     traits: [
       { icon: GraduationCap, label: "Chirurgien-Dentiste diplômé" },
       { icon: Microscope, label: "Précision & rigueur" },
       { icon: Heart, label: "Écoute attentive" },
     ],
   },
+];
+
+const otherDoctors = [
+  { image: "/dr-femme-1.png", role: "Chirurgien-Dentiste" },
+  { image: "/dr-femme-2.png", role: "Chirurgien-Dentiste" },
+  { image: "/dr-homme-2.png", role: "Chirurgien-Dentiste" },
 ];
 
 const assistants = [
@@ -55,11 +61,11 @@ export default function Team() {
             L&apos;Équipe
           </span>
           <h2 className="mt-3 font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-            Des dentistes <span className="text-primary">passionnés</span>
+            Nos <span className="text-primary">praticiens</span>
           </h2>
         </motion.div>
 
-        {/* Doctors */}
+        {/* Main doctors - big cards */}
         <div className="mt-10 grid gap-6 sm:mt-16 sm:gap-8 md:grid-cols-2">
           {doctors.map((member, i) => (
             <motion.div
@@ -95,11 +101,35 @@ export default function Team() {
           ))}
         </div>
 
-        {/* Assistants */}
+        {/* Other doctors - medium cards */}
+        <div className="mt-8 grid grid-cols-3 gap-4 sm:mt-10 sm:gap-6">
+          {otherDoctors.map((doc, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 1, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
+            >
+              <GlowCard glowColor="rgba(37, 99, 235, 0.5)" glowSize={200} borderRadius={20} borderWidth={2}>
+                <div className="group bg-white/10 backdrop-blur-xl">
+                  <div className="relative aspect-[3/4] overflow-hidden">
+                    <Image src={doc.image} alt={doc.role} fill className="object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                  </div>
+                  <div className="p-3 text-center sm:p-5">
+                    <p className="text-sm font-bold text-foreground sm:text-base">{doc.role}</p>
+                  </div>
+                </div>
+              </GlowCard>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Assistants - smaller */}
         <motion.div
           initial={{ opacity: 1, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-12 text-center sm:mt-16"
         >
           <h3 className="text-lg font-bold text-foreground sm:text-xl">
@@ -110,29 +140,24 @@ export default function Team() {
           </p>
         </motion.div>
 
-        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
           {assistants.map((person, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 1, y: 20 }}
+              initial={{ opacity: 1, y: 15 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
+              transition={{ duration: 0.4, delay: 0.9 + i * 0.08 }}
             >
               <div
-                className="group overflow-hidden rounded-xl border border-white/20 bg-white/10 backdrop-blur-xl transition-all duration-500 hover:bg-white/18 hover:-translate-y-1 sm:rounded-2xl"
-                style={{ boxShadow: "0 4px 24px -6px rgba(0,0,0,0.06), inset 0 1px 1px rgba(255,255,255,0.3)" }}
+                className="group overflow-hidden rounded-xl border border-white/15 bg-white/8 backdrop-blur-lg transition-all duration-500 hover:bg-white/15"
+                style={{ boxShadow: "0 2px 16px -4px rgba(0,0,0,0.05), inset 0 1px 1px rgba(255,255,255,0.2)" }}
               >
                 <div className="relative aspect-[3/4] overflow-hidden">
-                  <Image
-                    src={person.image}
-                    alt={person.role}
-                    fill
-                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                  <Image src={person.image} alt={person.role} fill className="object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
                 </div>
-                <div className="p-3 text-center sm:p-4">
-                  <p className="text-xs font-semibold text-primary sm:text-sm">{person.role}</p>
+                <div className="p-2 text-center sm:p-3">
+                  <p className="text-[11px] font-medium text-muted-foreground sm:text-xs">{person.role}</p>
                 </div>
               </div>
             </motion.div>
