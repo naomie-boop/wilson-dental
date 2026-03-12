@@ -7,6 +7,7 @@ import Services from "@/components/Services";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
+import DoctorNote from "@/components/DoctorNote";
 import Footer from "@/components/Footer";
 import FluidGradient from "@/components/FluidGradient";
 
@@ -29,6 +30,7 @@ export default function Home() {
       <Team />
       <Testimonials />
       <Contact />
+      <DoctorNote />
       <Footer />
     </>
   );
