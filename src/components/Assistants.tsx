@@ -25,18 +25,18 @@ export default function Assistants() {
           </p>
         </motion.div>
 
-        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-5">
+        <div className="mx-auto mt-6 grid max-w-2xl grid-cols-4 gap-3 sm:gap-4">
           {assistants.map((person, i) => (
             <motion.div key={person.name} initial={{ y: 10 }} whileInView={{ y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }}>
               <div
-                className="group overflow-hidden rounded-xl border border-white/15 bg-white/8 backdrop-blur-lg transition-all duration-300 hover:bg-white/15"
+                className="group overflow-hidden rounded-lg border border-white/15 bg-white/8 backdrop-blur-lg transition-all duration-300 hover:bg-white/15 sm:rounded-xl"
                 style={{ boxShadow: "0 2px 16px -4px rgba(0,0,0,0.05), inset 0 1px 1px rgba(255,255,255,0.2)" }}
               >
                 <div className="relative aspect-square overflow-hidden">
                   <Image src={person.image} alt={person.name} fill className="object-cover object-top transition-transform duration-500 group-hover:scale-105" />
                 </div>
-                <div className="p-2 text-center sm:p-3">
-                  <p className="text-xs font-semibold text-foreground sm:text-sm">{person.name}</p>
+                <div className="p-1.5 text-center sm:p-2">
+                  <p className="text-[10px] font-semibold text-foreground sm:text-xs">{person.name}</p>
                 </div>
               </div>
             </motion.div>
