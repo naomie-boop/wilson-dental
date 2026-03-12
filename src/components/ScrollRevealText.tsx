@@ -47,7 +47,7 @@ export default function ScrollRevealText({
   const containerRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"],
+    offset: ["start end", "end start"],
   });
   const progress = useTransform(scrollYProgress, (v) => clamp(v * speed));
 
@@ -56,26 +56,29 @@ export default function ScrollRevealText({
   return (
     <section
       ref={containerRef}
-      className="relative"
+      className="relative z-10"
       style={{ height: `${heightVh}vh` }}
     >
-      <div className="sticky top-1/2 -translate-y-1/2 px-4 sm:px-6 lg:px-8">
-        <div className={`relative mx-auto max-w-4xl text-center ${className}`}>
-          {/* Ghost layer */}
-          <div
-            className="pointer-events-none absolute inset-0"
-            style={{ opacity: ghostOpacity, color: "inherit" }}
-          >
-            {text}
-          </div>
-          {/* Animated layer */}
-          <div className="relative">
-            {words.map((word, i) => (
-              <span key={i}>
-                <WordSpan word={word} index={i} total={words.length} progress={progress} />
-                {i < words.length - 1 && " "}
-              </span>
-            ))}
+      <div className="sticky top-1/2 -translate-y-1/2 px-4 py-20 sm:px-6 lg:px-8">
+        <div
+          className="mx-auto max-w-4xl rounded-3xl border border-white/20 bg-white/10 p-8 text-center backdrop-blur-2xl sm:p-12 lg:p-16"
+          style={{ boxShadow: "0 8px 40px -10px rgba(0,0,0,0.06), inset 0 1px 2px rgba(255,255,255,0.3)" }}
+        >
+          <div className={`relative ${className}`}>
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{ opacity: ghostOpacity, color: "inherit" }}
+            >
+              {text}
+            </div>
+            <div className="relative">
+              {words.map((word, i) => (
+                <span key={i}>
+                  <WordSpan word={word} index={i} total={words.length} progress={progress} />
+                  {i < words.length - 1 && " "}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
