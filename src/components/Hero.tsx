@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, ShieldCheck, Clock, Baby } from "lucide-react";
 import Image from "next/image";
 import GlassButton from "./GlassButton";
 import GlowCard from "./GlowCard";
@@ -18,20 +18,36 @@ export default function Hero() {
             style={{ boxShadow: "inset 0 1px 1px rgba(255,255,255,0.3), 0 2px 8px rgba(0,0,0,0.04)" }}
           >
             <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-            Cabinet dentaire à Levallois-Perret
+            Cabinet dentaire 100% numérique à Levallois-Perret
           </div>
 
           <h1 className="font-[family-name:var(--font-playfair)] text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Bienvenue au cabinet{" "}
+            Le sourire de toute{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Wilson Dental
+              votre famille
             </span>
           </h1>
 
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-5 sm:text-lg lg:mx-0">
-            Des dentistes passionnés prêts à vous offrir des soins avancés et
-            personnalisés. Ensemble, redonnons un sourire à vos dents.
+            Un cabinet convivial et chaleureux, équipé des dernières technologies
+            — imprimante 3D, outils numérisés, écrans au plafond pour votre
+            détente. Pour les parents, les enfants, et toute la famille.
           </p>
+
+          <div className="mx-auto mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground sm:text-sm lg:mx-0 lg:justify-start">
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck className="h-3.5 w-3.5 text-primary" />
+              Urgences acceptées
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Clock className="h-3.5 w-3.5 text-primary" />
+              Lun–Ven 9h–19h
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Baby className="h-3.5 w-3.5 text-primary" />
+              Enfants bienvenus
+            </span>
+          </div>
 
           <div className="mt-6 flex flex-col items-center gap-3 sm:mt-8 sm:flex-row sm:gap-4 lg:justify-start">
             <GlassButton href={DOCTOLIB} variant="primary" size="lg">
@@ -65,7 +81,7 @@ export default function Hero() {
             >
               <div className="flex items-center gap-2">
                 <div className="h-2.5 w-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)] sm:h-3 sm:w-3" />
-                <span className="text-xs font-medium text-foreground/80 sm:text-sm">Lun–Ven : 9h–19h</span>
+                <span className="text-xs font-medium text-foreground/80 sm:text-sm">Urgences acceptées</span>
               </div>
             </motion.div>
           </div>

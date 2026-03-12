@@ -30,7 +30,7 @@ export default function DoctorNote() {
 
                 <div className="mt-4">
                   <Handwriting
-                    text="Devenir dentiste était mon rêve depuis l'âge de 8 ans. Aujourd'hui, chaque patient qui repart avec le sourire me rappelle pourquoi j'ai choisi ce métier. Notre cabinet est bien plus qu'un lieu de soins : c'est un espace où l'on prend le temps d'écouter, d'expliquer et de rassurer. Votre confiance est notre plus belle récompense."
+                    text="Devenir dentiste était mon rêve depuis l'âge de 8 ans. Ce qui me motive chaque jour, c'est de voir des familles entières nous faire confiance. Ici, on ne refuse jamais un patient, on accueille les urgences, et on prend le temps d'expliquer. Nos équipements numériques — imprimante 3D, écrans au plafond — ne sont pas là pour impressionner, mais pour rendre chaque soin plus précis et plus confortable. Votre sourire, c'est notre fierté."
                     fontSize={22}
                     color="#1a1a2e"
                     lineHeight={1.6}

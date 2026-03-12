@@ -20,7 +20,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <ScrollRevealText
-        text="Au cabinet Wilson Dental, nous avons pour mission de fournir des soins dentaires d'excellence, alliant rigueur scientifique et technologies de pointe. Chaque traitement est pensé pour offrir une expérience alliant précision, confort et sécurité, répondant avec rigueur aux attentes de nos patients."
+        text="Un cabinet 100% numérique où convivialité rime avec excellence. Imprimante 3D, outils digitalisés, studio photo et écrans au plafond pour votre détente : ici, on prend soin de toute la famille, des plus petits aux plus grands. Urgences acceptées, on ne refuse jamais un patient."
         className="font-[family-name:var(--font-playfair)] text-2xl font-bold leading-snug text-foreground sm:text-3xl lg:text-4xl"
         heightVh={200}
         ghostOpacity={0.12}
