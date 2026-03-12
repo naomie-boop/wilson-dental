@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { GraduationCap, Heart, Award } from "lucide-react";
+import { GraduationCap, Heart, Award, Microscope } from "lucide-react";
 import Image from "next/image";
 
 const team = [
@@ -17,6 +17,19 @@ const team = [
       { icon: GraduationCap, label: "Université Paris Descartes" },
       { icon: Heart, label: "Approche douce & pédagogue" },
       { icon: Award, label: "15 ans d'expérience" },
+    ],
+  },
+  {
+    name: "Dr. Associé",
+    role: "Chirurgien-Dentiste",
+    speciality: "Parodontologie & Soins conservateurs",
+    image: "/dr-2.png",
+    description:
+      "Rigoureux et attentif, il apporte son savoir-faire en parodontologie et soins conservateurs pour une prise en charge globale de qualité.",
+    traits: [
+      { icon: GraduationCap, label: "Formation spécialisée" },
+      { icon: Microscope, label: "Précision & rigueur" },
+      { icon: Heart, label: "Écoute attentive" },
     ],
   },
 ];
@@ -47,17 +60,16 @@ export default function Team() {
           </p>
         </motion.div>
 
-        <div className="mt-10 flex justify-center sm:mt-16">
+        <div className="mt-10 grid gap-6 sm:mt-16 sm:gap-8 md:grid-cols-2">
           {team.map((member, i) => (
             <motion.div
               key={member.name}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
-              className="w-full max-w-sm sm:max-w-2xl"
             >
-              <div className="group overflow-hidden rounded-2xl border border-border bg-white transition-all hover:shadow-xl sm:flex sm:rounded-3xl">
-                <div className="relative h-72 overflow-hidden sm:h-auto sm:w-1/2">
+              <div className="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-all hover:shadow-xl sm:rounded-3xl">
+                <div className="relative h-72 overflow-hidden sm:h-80">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -65,7 +77,7 @@ export default function Team() {
                     className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <div className="p-6 sm:flex sm:w-1/2 sm:flex-col sm:justify-center sm:p-8 lg:p-10">
+                <div className="p-5 sm:p-8">
                   <h3 className="text-xl font-bold text-foreground sm:text-2xl">
                     {member.name}
                   </h3>
@@ -76,7 +88,7 @@ export default function Team() {
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:text-base">
                     {member.description}
                   </p>
-                  <div className="mt-5 space-y-2.5 sm:mt-6 sm:space-y-3">
+                  <div className="mt-4 space-y-2 sm:mt-6 sm:space-y-3">
                     {member.traits.map((trait) => (
                       <div
                         key={trait.label}

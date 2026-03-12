@@ -55,8 +55,8 @@ export default function About() {
 
             <div className="relative my-6 overflow-hidden rounded-2xl lg:hidden">
               <Image
-                src="/hero-surgery.png"
-                alt="L'équipe Wilson Dental en action"
+                src="/cabinet-reception.png"
+                alt="Accueil du cabinet Wilson Dental"
                 width={600}
                 height={340}
                 className="h-48 w-full object-cover sm:h-64"
