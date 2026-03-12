@@ -11,7 +11,7 @@ const DOCTOLIB = "https://www.doctolib.fr/cabinet-dentaire/levallois-perret/cabi
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative z-20 overflow-hidden pb-12 sm:pb-16 lg:pb-20">
+    <section id="hero" className="relative z-20 overflow-hidden bg-[#e8eef5] pb-12 sm:pb-16 lg:pb-20">
       <div className="relative mx-auto flex max-w-7xl flex-col items-center px-4 pt-24 sm:px-6 sm:pt-28 lg:flex-row lg:gap-12 lg:px-8 lg:pt-32 xl:gap-16">
         <div className="flex-1 text-center lg:text-left">
           <div
