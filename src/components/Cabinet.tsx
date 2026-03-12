@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import ParallaxMarquee from "./ParallaxMarquee";
 
 const marqueeCards = [
@@ -12,13 +11,6 @@ const marqueeCards = [
   { src: "/cabinet-carte.png", alt: "Carte de visite Wilson Dental", depth: -50, yOffset: -60 },
   { src: "/hero-surgery.png", alt: "Équipe en soin", depth: 100, yOffset: 30 },
   { src: "/cabinet-salle3.png", alt: "Fauteuil de soins", depth: 20, yOffset: -30 },
-];
-
-const assistants = [
-  { image: "/assistante-1.png", name: "Ofélia" },
-  { image: "/assistante-2.png", name: "Graziella" },
-  { image: "/assistante-3.png", name: "Martine" },
-  { image: "/assistante-4.png", name: "Pauline" },
 ];
 
 const anim = { initial: { y: 15 }, whileInView: { y: 0 }, viewport: { once: true, margin: "-50px" as const }, transition: { duration: 0.5 } };
@@ -39,7 +31,6 @@ export default function Cabinet() {
         </motion.div>
       </div>
 
-      {/* Parallax marquee - full width */}
       <div className="mt-8 sm:mt-10">
         <ParallaxMarquee
           cards={marqueeCards}
@@ -50,32 +41,6 @@ export default function Cabinet() {
           maxRotation={10}
           borderRadius={20}
         />
-      </div>
-
-      {/* Assistants */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div {...anim} transition={{ duration: 0.5, delay: 0.2 }} className="mt-10 text-center sm:mt-12">
-          <h3 className="text-lg font-bold text-foreground sm:text-xl">Nos secrétaires &amp; assistantes dentaires</h3>
-          <p className="mt-1 text-sm text-muted-foreground">Dévouées pour votre accueil et votre confort au quotidien</p>
-        </motion.div>
-
-        <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-          {assistants.map((person, i) => (
-            <motion.div key={person.name} initial={{ y: 10 }} whileInView={{ y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.2 + i * 0.08 }}>
-              <div
-                className="group overflow-hidden rounded-xl border border-white/15 bg-white/8 backdrop-blur-lg transition-all duration-300 hover:bg-white/15"
-                style={{ boxShadow: "0 2px 16px -4px rgba(0,0,0,0.05), inset 0 1px 1px rgba(255,255,255,0.2)" }}
-              >
-                <div className="relative aspect-square overflow-hidden">
-                  <Image src={person.image} alt={person.name} fill className="object-cover object-top transition-transform duration-500 group-hover:scale-105" />
-                </div>
-                <div className="p-2 text-center sm:p-3">
-                  <p className="text-xs font-semibold text-foreground sm:text-sm">{person.name}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );

@@ -4,6 +4,7 @@ import ScrollRevealText from "@/components/ScrollRevealText";
 import Cabinet from "@/components/Cabinet";
 import Services from "@/components/Services";
 import Team from "@/components/Team";
+import Assistants from "@/components/Assistants";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import DoctorNote from "@/components/DoctorNote";
@@ -25,9 +26,10 @@ export default function Home() {
         ghostOpacity={0.12}
         speed={1.3}
       />
+      <Cabinet />
       <Services />
       <Team />
-      <Cabinet />
+      <Assistants />
       <Testimonials />
       <Contact />
       <DoctorNote />
