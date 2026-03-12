@@ -10,9 +10,8 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
         <div className="grid gap-8 sm:grid-cols-2 sm:gap-12 lg:grid-cols-4">
           <div>
-            <a href="#hero" className="flex items-center gap-2">
-              <Image src="/logo-icon.png" alt="Wilson Dental" width={32} height={32} className="h-8 w-8" />
-              <Image src="/logo-horizontal.png" alt="Wilson Dental" width={120} height={35} className="h-7 w-auto" />
+            <a href="#hero" className="inline-block">
+              <Image src="/logo-horizontal.png" alt="Wilson Dental" width={140} height={40} className="h-8 w-auto" />
             </a>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               Innovation · Proximité · Convivialité

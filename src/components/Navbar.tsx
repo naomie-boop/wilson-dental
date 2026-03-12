@@ -45,20 +45,14 @@ export default function Navbar() {
       >
         <div className="flex h-14 items-center justify-between px-4 sm:h-16 sm:px-5">
           {/* Logo */}
-          <a href="#hero" className="flex items-center gap-2">
-            <Image
-              src="/logo-icon.png"
-              alt="Wilson Dental"
-              width={28}
-              height={28}
-              className="h-6 w-6 sm:h-7 sm:w-7"
-            />
+          <a href="#hero" className="flex items-center">
             <Image
               src="/logo-horizontal.png"
               alt="Wilson Dental"
-              width={120}
-              height={35}
-              className="hidden h-6 w-auto sm:block"
+              width={130}
+              height={38}
+              className="h-7 w-auto sm:h-8"
+              priority
             />
           </a>
 

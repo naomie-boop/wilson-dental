@@ -25,7 +25,7 @@ export default function Assistants() {
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-6 grid max-w-2xl grid-cols-4 gap-3 sm:gap-4">
+        <div className="mx-auto mt-6 grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
           {assistants.map((person, i) => (
             <motion.div key={person.name} initial={{ y: 10 }} whileInView={{ y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }}>
               <div

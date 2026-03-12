@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import ScrollRevealText from "@/components/ScrollRevealText";
+import ValueBanner from "@/components/ValueBanner";
 import Cabinet from "@/components/Cabinet";
 import Services from "@/components/Services";
 import Team from "@/components/Team";
@@ -19,13 +19,7 @@ export default function Home() {
       <FluidGradient />
       <Navbar />
       <Hero />
-      <ScrollRevealText
-        text="Innovation, proximité, convivialité. Un cabinet 100% numérique — caméra optique, scanner 3D, imprimante 3D, studio photo — où l'on prend soin de toute la famille, des plus petits aux plus grands. Urgences acceptées, paiement en plusieurs fois, on ne refuse jamais un patient."
-        className="font-[family-name:var(--font-playfair)] text-2xl font-bold leading-snug text-foreground sm:text-3xl lg:text-4xl"
-        heightVh={200}
-        ghostOpacity={0.12}
-        speed={1.3}
-      />
+      <ValueBanner />
       <Cabinet />
       <Services />
       <Team />
