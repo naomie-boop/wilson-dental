@@ -10,8 +10,7 @@ const team = [
     name: "Dr. David Ohayon",
     role: "Chirurgien-Dentiste",
     image: "/dr-ohayon.png",
-    description:
-      "Minutieux, doux, à l'écoute et très pédagogue, le Dr Ohayon prend le temps de tout expliquer et de rassurer. Passionné et perfectionniste, il met son expertise au service de votre sourire.",
+    description: "Minutieux, doux, à l'écoute et très pédagogue, le Dr Ohayon prend le temps de tout expliquer et de rassurer. Passionné et perfectionniste, il met son expertise au service de votre sourire.",
     traits: [
       { icon: GraduationCap, label: "Chirurgien-Dentiste diplômé" },
       { icon: Heart, label: "Doux, chaleureux et pédagogue" },
@@ -22,8 +21,7 @@ const team = [
     name: "Chirurgien-Dentiste",
     role: "Associé",
     image: "/dr-2.png",
-    description:
-      "Rigoureux et attentif, il complète l'équipe avec son savoir-faire pour une prise en charge globale et de qualité au cabinet Wilson Dental.",
+    description: "Rigoureux et attentif, il complète l'équipe avec son savoir-faire pour une prise en charge globale et de qualité au cabinet Wilson Dental.",
     traits: [
       { icon: GraduationCap, label: "Chirurgien-Dentiste diplômé" },
       { icon: Microscope, label: "Précision & rigueur" },
@@ -37,55 +35,36 @@ export default function Team() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="team" className="bg-muted py-16 sm:py-24 lg:py-32">
+    <section id="team" className="relative py-16 sm:py-24 lg:py-32">
       <div ref={ref} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-            L&apos;Équipe
-          </span>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }} className="text-center">
+          <span className="text-sm font-semibold uppercase tracking-widest text-primary">L&apos;Équipe</span>
           <h2 className="mt-3 font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-            Des dentistes{" "}
-            <span className="text-primary">passionnés</span>
+            Des dentistes <span className="text-primary">passionnés</span>
           </h2>
         </motion.div>
 
         <div className="mt-10 grid gap-6 sm:mt-16 sm:gap-8 md:grid-cols-2">
           {team.map((member, i) => (
-            <motion.div
-              key={member.name}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
-            >
-              <div className="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-all hover:shadow-xl sm:rounded-3xl">
+            <motion.div key={member.name} initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}>
+              <div
+                className="group h-full overflow-hidden rounded-2xl border border-white/25 bg-white/10 backdrop-blur-xl transition-all duration-500 hover:bg-white/18 hover:-translate-y-1 sm:rounded-3xl"
+                style={{ boxShadow: "0 8px 32px -8px rgba(0,0,0,0.08), inset 0 1px 1px rgba(255,255,255,0.3)" }}
+              >
                 <div className="relative h-72 overflow-hidden sm:h-80">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  />
+                  <Image src={member.image} alt={member.name} fill className="object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-white/5" />
                 </div>
                 <div className="p-5 sm:p-8">
-                  <h3 className="text-xl font-bold text-foreground sm:text-2xl">
-                    {member.name}
-                  </h3>
+                  <h3 className="text-xl font-bold text-foreground sm:text-2xl">{member.name}</h3>
                   <p className="font-semibold text-primary">{member.role}</p>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:text-base">
-                    {member.description}
-                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:text-base">{member.description}</p>
                   <div className="mt-4 space-y-2 sm:mt-6 sm:space-y-3">
                     {member.traits.map((trait) => (
-                      <div
-                        key={trait.label}
-                        className="flex items-center gap-3 text-sm text-muted-foreground"
-                      >
-                        <trait.icon className="h-4 w-4 flex-shrink-0 text-primary" />
+                      <div key={trait.label} className="flex items-center gap-3 text-sm text-muted-foreground">
+                        <div className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/20 bg-primary/10 backdrop-blur-md">
+                          <trait.icon className="h-3.5 w-3.5 text-primary" />
+                        </div>
                         {trait.label}
                       </div>
                     ))}

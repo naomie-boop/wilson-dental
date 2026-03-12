@@ -4,13 +4,14 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Stethoscope, Sparkles, Baby, Syringe } from "lucide-react";
 import Image from "next/image";
+import GlassButton from "./GlassButton";
 
 export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="relative bg-white py-16 sm:py-24 lg:py-32">
+    <section id="about" className="relative py-16 sm:py-24 lg:py-32">
       <div ref={ref} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 sm:gap-16 lg:grid-cols-2">
           <motion.div
@@ -26,14 +27,10 @@ export default function About() {
               <span className="text-primary">haute qualité</span>
             </h2>
 
-            <div className="relative my-6 overflow-hidden rounded-2xl lg:hidden">
-              <Image
-                src="/hero-surgery.png"
-                alt="L'équipe Wilson Dental en soin"
-                width={600}
-                height={340}
-                className="h-48 w-full object-cover sm:h-64"
-              />
+            <div className="relative my-6 overflow-hidden rounded-2xl border border-white/25 lg:hidden"
+              style={{ boxShadow: "0 8px 32px -8px rgba(0,0,0,0.1), inset 0 1px 1px rgba(255,255,255,0.3)" }}>
+              <Image src="/hero-surgery.png" alt="L'équipe Wilson Dental en soin" width={600} height={340}
+                className="h-48 w-full object-cover sm:h-64" />
             </div>
 
             <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -52,18 +49,12 @@ export default function About() {
             </p>
 
             <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">
-              <a
-                href="#services"
-                className="rounded-full bg-primary px-6 py-3 text-center text-sm font-semibold text-white transition-all hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/25"
-              >
+              <GlassButton href="#services" variant="primary" size="md">
                 Découvrir nos soins
-              </a>
-              <a
-                href="#team"
-                className="rounded-full border border-border px-6 py-3 text-center text-sm font-semibold text-foreground transition-all hover:border-primary/30 hover:bg-primary-light/30"
-              >
+              </GlassButton>
+              <GlassButton href="#team" variant="secondary" size="md">
                 Découvrir l&apos;équipe
-              </a>
+              </GlassButton>
             </div>
           </motion.div>
 
@@ -74,35 +65,20 @@ export default function About() {
             className="grid grid-cols-2 gap-3 sm:gap-4"
           >
             {[
-              {
-                icon: Stethoscope,
-                title: "Dentisterie de pointe",
-                description: "Équipements et techniques de dernière génération",
-              },
-              {
-                icon: Sparkles,
-                title: "Experts en esthétique",
-                description: "Blanchiment, facettes, smile design",
-              },
-              {
-                icon: Baby,
-                title: "Soins pour enfants",
-                description: "Approche douce et adaptée aux plus jeunes",
-              },
-              {
-                icon: Syringe,
-                title: "Chirurgie avancée",
-                description: "Implants, greffes et chirurgie orale",
-              },
+              { icon: Stethoscope, title: "Dentisterie de pointe", description: "Équipements et techniques de dernière génération" },
+              { icon: Sparkles, title: "Experts en esthétique", description: "Blanchiment, facettes, smile design" },
+              { icon: Baby, title: "Soins pour enfants", description: "Approche douce et adaptée aux plus jeunes" },
+              { icon: Syringe, title: "Chirurgie avancée", description: "Implants, greffes et chirurgie orale" },
             ].map((item, i) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-                className="group rounded-xl border border-border bg-white p-4 transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 sm:rounded-2xl sm:p-6"
+                className="group rounded-xl border border-white/25 bg-white/15 p-4 backdrop-blur-xl transition-all duration-500 hover:bg-white/25 hover:-translate-y-1 sm:rounded-2xl sm:p-6"
+                style={{ boxShadow: "0 4px 24px -6px rgba(0,0,0,0.06), inset 0 1px 1px rgba(255,255,255,0.3)" }}
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-light text-primary transition-colors group-hover:bg-primary group-hover:text-white sm:h-12 sm:w-12 sm:rounded-xl">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-primary/15 text-primary backdrop-blur-md transition-all group-hover:bg-primary/25 sm:h-12 sm:w-12">
                   <item.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
                 <div className="mt-3 text-sm font-bold text-foreground sm:mt-4 sm:text-base">
