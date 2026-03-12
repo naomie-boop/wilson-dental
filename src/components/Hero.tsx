@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import GlassButton from "./GlassButton";
+import TextCarousel from "./TextCarousel";
 
 export default function Hero() {
   return (
@@ -36,9 +37,15 @@ export default function Hero() {
           </motion.div>
 
           <h1 className="font-[family-name:var(--font-playfair)] text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-7xl">
-            Bienvenue au cabinet{" "}
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Wilson Dental
+            Des soins{" "}
+            <TextCarousel
+              words={["avancés", "personnalisés", "innovants", "de qualité"]}
+              sweepMs={800}
+              holdMs={2200}
+            />
+            <br />
+            <span className="text-foreground/80">
+              pour votre sourire
             </span>
           </h1>
 
