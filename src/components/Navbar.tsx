@@ -2,23 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import Image from "next/image";
 
 const navLinks = [
   { label: "Accueil", href: "#hero" },
-  { label: "À propos", href: "#about" },
-  {
-    label: "Soins",
-    href: "#services",
-    dropdown: [
-      { label: "Soins Conservateurs", href: "#services", color: "#3b82f6" },
-      { label: "Dentisterie Pédiatrique", href: "#services", color: "#ec4899" },
-      { label: "Parodontologie", href: "#services", color: "#ef4444" },
-      { label: "Chirurgie & Implantologie", href: "#services", color: "#10b981" },
-    ],
-  },
+  { label: "Soins", href: "#services" },
   { label: "Équipe", href: "#team" },
+  { label: "Cabinet", href: "#cabinet" },
   { label: "Témoignages", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];
@@ -26,7 +17,6 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -75,63 +65,13 @@ export default function Navbar() {
           {/* Desktop links */}
           <div className="hidden items-center gap-0.5 lg:flex">
             {navLinks.map((link) => (
-              <div
+              <a
                 key={link.label}
-                className="relative"
-                onMouseEnter={() =>
-                  link.dropdown && setActiveDropdown(link.label)
-                }
-                onMouseLeave={() => setActiveDropdown(null)}
+                href={link.href}
+                className="rounded-xl px-3 py-2 text-[13px] font-medium text-foreground/65 transition-all duration-200 hover:bg-black/[0.04] hover:text-foreground"
               >
-                <a
-                  href={link.href}
-                  className="flex items-center gap-1 rounded-xl px-3 py-2 text-[13px] font-medium text-foreground/65 transition-all duration-200 hover:bg-black/[0.04] hover:text-foreground"
-                >
-                  {link.label}
-                  {link.dropdown && (
-                    <ChevronDown className="h-3 w-3 opacity-50" />
-                  )}
-                </a>
-
-                {/* Dropdown */}
-                <AnimatePresence>
-                  {link.dropdown && activeDropdown === link.label && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 6, scale: 0.97 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 6, scale: 0.97 }}
-                      transition={{ duration: 0.15, ease: "easeOut" }}
-                      className="absolute left-0 top-full z-50 pt-2"
-                    >
-                      <div
-                        className="w-56 overflow-hidden rounded-xl p-1.5"
-                        style={{
-                          background: "rgba(255, 255, 255, 0.85)",
-                          backdropFilter: "blur(24px) saturate(1.8)",
-                          WebkitBackdropFilter: "blur(24px) saturate(1.8)",
-                          border: "1px solid rgba(255, 255, 255, 0.5)",
-                          boxShadow:
-                            "0px 0.6px 0.6px -1.25px rgba(0, 0, 0, 0.18), 0px 2.3px 2.3px -2.5px rgba(0, 0, 0, 0.16), 0px 10px 10px -3.75px rgba(0, 0, 0, 0.06)",
-                        }}
-                      >
-                        {link.dropdown.map((item) => (
-                          <a
-                            key={item.label}
-                            href={item.href}
-                            className="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-[13px] font-medium text-foreground/70 transition-all hover:bg-black/[0.04] hover:text-foreground"
-                          >
-                            <div
-                              className="h-2 w-2 rounded-full"
-                              style={{ backgroundColor: item.color }}
-                            />
-                            {item.label}
-                          </a>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+                {link.label}
+              </a>
             ))}
           </div>
 
@@ -185,33 +125,14 @@ export default function Navbar() {
             >
               <div className="space-y-0.5 px-3 py-3">
                 {navLinks.map((link) => (
-                  <div key={link.label}>
-                    <a
-                      href={link.href}
-                      onClick={() => setIsOpen(false)}
-                      className="block rounded-xl px-3 py-2.5 text-[15px] font-medium text-foreground/70 transition-all hover:bg-black/[0.04] hover:text-foreground"
-                    >
-                      {link.label}
-                    </a>
-                    {link.dropdown && (
-                      <div className="ml-4 space-y-0.5">
-                        {link.dropdown.map((item) => (
-                          <a
-                            key={item.label}
-                            href={item.href}
-                            onClick={() => setIsOpen(false)}
-                            className="flex items-center gap-2 rounded-lg px-3 py-2 text-[13px] text-foreground/50 transition-all hover:text-foreground"
-                          >
-                            <div
-                              className="h-1.5 w-1.5 rounded-full"
-                              style={{ backgroundColor: item.color }}
-                            />
-                            {item.label}
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block rounded-xl px-3 py-2.5 text-[15px] font-medium text-foreground/70 transition-all hover:bg-black/[0.04] hover:text-foreground"
+                  >
+                    {link.label}
+                  </a>
                 ))}
                 <a
                   href="tel:+33147375316"
