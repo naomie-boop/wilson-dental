@@ -21,13 +21,13 @@ export default function Hero() {
 
       <div className="relative mx-auto flex max-w-7xl flex-col items-center px-4 pt-24 pb-16 sm:px-6 sm:pt-32 sm:pb-20 lg:flex-row lg:gap-12 lg:px-8 lg:pt-36 lg:pb-28 xl:gap-16 xl:pt-40 xl:pb-32">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 1, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex-1 text-center lg:text-left"
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 1, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
             className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-3 py-1.5 text-xs font-medium text-primary backdrop-blur-xl sm:mb-6 sm:px-4 sm:py-2 sm:text-sm"
@@ -67,7 +67,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 1, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="mt-10 w-full flex-1 sm:mt-16 lg:mt-0"

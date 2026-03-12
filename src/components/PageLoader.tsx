@@ -111,7 +111,7 @@ export default function PageLoader() {
             </motion.div>
 
             {/* Heading */}
-            <motion.h1
+            <motion.div
               className="mt-5 text-xl font-bold tracking-[0.2em] text-white uppercase sm:text-2xl"
               initial={{ opacity: 0, y: 6 }}
               animate={
@@ -126,7 +126,7 @@ export default function PageLoader() {
               }
             >
               Wilson Dental
-            </motion.h1>
+            </motion.div>
 
             {/* Subtitle */}
             <motion.p

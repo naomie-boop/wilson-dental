@@ -47,7 +47,7 @@ export default function Services() {
     <section id="services" className="relative py-16 sm:py-24 lg:py-32">
       <div ref={ref} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center"
@@ -62,7 +62,7 @@ export default function Services() {
           {services.map((service, i) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 1, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
               className="group rounded-xl border border-white/25 bg-white/12 p-5 backdrop-blur-xl transition-all duration-500 hover:bg-white/20 hover:-translate-y-1 sm:rounded-2xl sm:p-8"

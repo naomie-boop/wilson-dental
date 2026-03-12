@@ -27,6 +27,7 @@ export default function RingGallery({
   const galleryRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState(0);
   const [rotation, setRotation] = useState(0);
+  const [hovered, setHovered] = useState<number | null>(null);
 
   useEffect(() => {
     const update = () => {
@@ -84,30 +85,32 @@ export default function RingGallery({
       {/* Orbiting cards */}
       {size > 0 &&
         cards.map((card, i) => {
-          const angle =
-            (i / cards.length) * 2 * Math.PI - Math.PI / 2 + rotation;
+          const angle = (i / cards.length) * 2 * Math.PI - Math.PI / 2 + rotation;
           const x = cx + r * Math.cos(angle);
           const y = cy + r * Math.sin(angle);
           const deg = (angle + Math.PI / 2) * (180 / Math.PI);
+          const isFlipped = hovered === i;
 
           return (
             <div
               key={i}
-              className="group absolute"
+              className="absolute"
               style={{
                 left: x,
                 top: y,
                 transform: `translate(-50%, -50%) rotate(${deg}deg)`,
-                zIndex: 2,
+                zIndex: isFlipped ? 20 : 2,
                 perspective: 1000,
               }}
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}
             >
               <div
                 className="relative h-32 w-24 sm:h-36 sm:w-28 lg:h-40 lg:w-32"
                 style={{
                   transformStyle: "preserve-3d",
-                  transition:
-                    "transform 0.7s cubic-bezier(.4,0,.2,1)",
+                  transition: "transform 0.7s cubic-bezier(.4,0,.2,1)",
+                  transform: isFlipped ? "rotateY(180deg) scale(1.1)" : "rotateY(0deg) scale(1)",
                 }}
               >
                 {/* Front */}
@@ -115,13 +118,7 @@ export default function RingGallery({
                   className="absolute inset-0 overflow-hidden rounded-2xl border border-white/20 shadow-lg"
                   style={{ backfaceVisibility: "hidden" }}
                 >
-                  <Image
-                    src={card.image}
-                    alt={card.title}
-                    fill
-                    className="object-cover"
-                    sizes="128px"
-                  />
+                  <Image src={card.image} alt={card.title} fill className="object-cover" sizes="128px" />
                 </div>
 
                 {/* Back */}
@@ -130,26 +127,15 @@ export default function RingGallery({
                   style={{
                     backfaceVisibility: "hidden",
                     transform: "rotateY(180deg)",
-                    boxShadow:
-                      "inset 0 1px 1px rgba(255,255,255,0.3)",
+                    boxShadow: "inset 0 1px 1px rgba(255,255,255,0.3)",
                   }}
                 >
-                  <h3 className="text-xs font-bold text-foreground sm:text-sm">
-                    {card.title}
-                  </h3>
+                  <h3 className="text-xs font-bold text-foreground sm:text-sm">{card.title}</h3>
                   <p className="mt-1 text-[9px] leading-tight text-muted-foreground sm:text-[10px]">
                     {card.description}
                   </p>
                 </div>
               </div>
-
-              <style jsx>{`
-                .group:hover > div,
-                .group:focus > div {
-                  transform: rotateY(180deg) scale(1.1);
-                  z-index: 20;
-                }
-              `}</style>
             </div>
           );
         })}

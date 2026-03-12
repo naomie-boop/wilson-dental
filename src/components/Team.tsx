@@ -38,7 +38,7 @@ export default function Team() {
   return (
     <section id="team" className="relative py-16 sm:py-24 lg:py-32">
       <div ref={ref} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }} className="text-center">
+        <motion.div initial={{ opacity: 1, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }} className="text-center">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">L&apos;Équipe</span>
           <h2 className="mt-3 font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
             Des dentistes <span className="text-primary">passionnés</span>
@@ -47,7 +47,7 @@ export default function Team() {
 
         <div className="mt-10 grid gap-6 sm:mt-16 sm:gap-8 md:grid-cols-2">
           {team.map((member, i) => (
-            <motion.div key={member.name} initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}>
+            <motion.div key={member.name} initial={{ opacity: 1, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}>
               <GlowCard glowColor="rgba(37, 99, 235, 0.6)" glowSize={280} borderRadius={24} borderWidth={2}>
                 <div className="group h-full bg-white/10 backdrop-blur-xl">
                   <div className="relative h-72 overflow-hidden sm:h-80">

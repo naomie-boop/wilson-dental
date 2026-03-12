@@ -21,7 +21,7 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="relative py-16 sm:py-24 lg:py-32">
       <div ref={ref} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}
+        <motion.div initial={{ opacity: 1, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}
           className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center sm:gap-6">
           <div>
             <span className="text-sm font-semibold uppercase tracking-widest text-primary">Témoignages</span>
@@ -50,7 +50,7 @@ export default function Testimonials() {
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
             style={{ width: `${testimonials.length * 100}%` }}>
             {testimonials.map((t, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.1 + i * 0.05 }}
+              <motion.div key={i} initial={{ opacity: 1, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.1 + i * 0.05 }}
                 style={{ width: `${100 / testimonials.length}%` }} className="flex-shrink-0">
                 <div
                   className="flex h-full flex-col rounded-xl border border-white/25 bg-white/12 p-5 backdrop-blur-xl transition-all duration-300 hover:bg-white/20 sm:rounded-2xl sm:p-8"

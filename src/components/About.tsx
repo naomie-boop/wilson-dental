@@ -16,7 +16,7 @@ export default function About() {
       <div ref={ref} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 sm:gap-16 lg:grid-cols-2">
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 1, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7 }}
           >
@@ -54,7 +54,7 @@ export default function About() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 1, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="grid grid-cols-2 gap-3 sm:gap-4"
@@ -67,7 +67,7 @@ export default function About() {
             ].map((item, i) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 1, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
                 className="group rounded-xl border border-white/25 bg-white/15 p-4 backdrop-blur-xl transition-all duration-500 hover:bg-white/25 hover:-translate-y-1 sm:rounded-2xl sm:p-6"

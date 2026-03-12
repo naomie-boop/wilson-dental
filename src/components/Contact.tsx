@@ -17,7 +17,7 @@ export default function Contact() {
 
       <div ref={ref} className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:gap-16 lg:grid-cols-2">
-          <motion.div initial={{ opacity: 0, x: -30 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6 }}>
+          <motion.div initial={{ opacity: 1, x: -30 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6 }}>
             <span className="text-sm font-semibold uppercase tracking-widest text-primary">Contact</span>
             <h2 className="mt-3 font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
               Prenez rendez-vous dès aujourd&apos;hui
@@ -53,7 +53,7 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: 30 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 }}>
+          <motion.div initial={{ opacity: 1, x: 30 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 }}>
             <div
               className="rounded-2xl border border-white/25 bg-white/20 p-5 backdrop-blur-2xl sm:rounded-3xl sm:p-8 lg:p-10"
               style={{ boxShadow: "0 16px 48px -12px rgba(0,0,0,0.1), inset 0 1px 2px rgba(255,255,255,0.4), inset 0 -1px 2px rgba(0,0,0,0.03)" }}
@@ -65,24 +65,24 @@ export default function Contact() {
               <form className="space-y-4 sm:space-y-5">
                 <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
                   <div>
-                    <label className="mb-1 block text-sm font-medium text-foreground sm:mb-1.5">Prénom</label>
-                    <input type="text" placeholder="Votre prénom"
+                    <label htmlFor="prenom" className="mb-1 block text-sm font-medium text-foreground sm:mb-1.5">Prénom</label>
+                    <input id="prenom" name="prenom" type="text" placeholder="Votre prénom"
                       className="w-full rounded-xl border border-white/25 bg-white/30 px-3 py-2.5 text-sm backdrop-blur-md transition-all focus:border-primary/50 focus:bg-white/40 focus:outline-none focus:ring-2 focus:ring-primary/20 sm:px-4 sm:py-3" />
                   </div>
                   <div>
-                    <label className="mb-1 block text-sm font-medium text-foreground sm:mb-1.5">Nom</label>
-                    <input type="text" placeholder="Votre nom"
+                    <label htmlFor="nom" className="mb-1 block text-sm font-medium text-foreground sm:mb-1.5">Nom</label>
+                    <input id="nom" name="nom" type="text" placeholder="Votre nom"
                       className="w-full rounded-xl border border-white/25 bg-white/30 px-3 py-2.5 text-sm backdrop-blur-md transition-all focus:border-primary/50 focus:bg-white/40 focus:outline-none focus:ring-2 focus:ring-primary/20 sm:px-4 sm:py-3" />
                   </div>
                 </div>
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-foreground sm:mb-1.5">Téléphone</label>
-                  <input type="tel" placeholder="06 12 34 56 78"
+                  <label htmlFor="telephone" className="mb-1 block text-sm font-medium text-foreground sm:mb-1.5">Téléphone</label>
+                  <input id="telephone" name="telephone" type="tel" placeholder="06 12 34 56 78"
                     className="w-full rounded-xl border border-white/25 bg-white/30 px-3 py-2.5 text-sm backdrop-blur-md transition-all focus:border-primary/50 focus:bg-white/40 focus:outline-none focus:ring-2 focus:ring-primary/20 sm:px-4 sm:py-3" />
                 </div>
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-foreground sm:mb-1.5">Type de soin</label>
-                  <select className="w-full rounded-xl border border-white/25 bg-white/30 px-3 py-2.5 text-sm text-muted-foreground backdrop-blur-md transition-all focus:border-primary/50 focus:bg-white/40 focus:outline-none focus:ring-2 focus:ring-primary/20 sm:px-4 sm:py-3">
+                  <label htmlFor="soin" className="mb-1 block text-sm font-medium text-foreground sm:mb-1.5">Type de soin</label>
+                  <select id="soin" name="soin" className="w-full rounded-xl border border-white/25 bg-white/30 px-3 py-2.5 text-sm text-muted-foreground backdrop-blur-md transition-all focus:border-primary/50 focus:bg-white/40 focus:outline-none focus:ring-2 focus:ring-primary/20 sm:px-4 sm:py-3">
                     <option value="">Sélectionnez un soin</option>
                     <option>Consultation générale</option>
                     <option>Détartrage</option>
@@ -94,8 +94,8 @@ export default function Contact() {
                   </select>
                 </div>
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-foreground sm:mb-1.5">Message (optionnel)</label>
-                  <textarea rows={3} placeholder="Décrivez brièvement votre besoin..."
+                  <label htmlFor="message" className="mb-1 block text-sm font-medium text-foreground sm:mb-1.5">Message (optionnel)</label>
+                  <textarea id="message" name="message" rows={3} placeholder="Décrivez brièvement votre besoin..."
                     className="w-full resize-none rounded-xl border border-white/25 bg-white/30 px-3 py-2.5 text-sm backdrop-blur-md transition-all focus:border-primary/50 focus:bg-white/40 focus:outline-none focus:ring-2 focus:ring-primary/20 sm:px-4 sm:py-3" />
                 </div>
                 <button type="submit"
