@@ -6,7 +6,7 @@ import { GraduationCap, Heart, Award, Microscope } from "lucide-react";
 import Image from "next/image";
 import GlowCard from "./GlowCard";
 
-const team = [
+const doctors = [
   {
     name: "Dr. David Ohayon",
     role: "Chirurgien-Dentiste",
@@ -31,6 +31,13 @@ const team = [
   },
 ];
 
+const assistants = [
+  { image: "/assistante-1.png", role: "Assistante Dentaire" },
+  { image: "/assistante-2.png", role: "Assistante Dentaire" },
+  { image: "/assistante-3.png", role: "Secrétaire Médicale" },
+  { image: "/assistante-4.png", role: "Assistante Dentaire" },
+];
+
 export default function Team() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -38,16 +45,29 @@ export default function Team() {
   return (
     <section id="team" className="relative py-16 sm:py-24 lg:py-32">
       <div ref={ref} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 1, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }} className="text-center">
-          <span className="text-sm font-semibold uppercase tracking-widest text-primary">L&apos;Équipe</span>
+        <motion.div
+          initial={{ opacity: 1, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
+          <span className="text-sm font-semibold uppercase tracking-widest text-primary">
+            L&apos;Équipe
+          </span>
           <h2 className="mt-3 font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
             Des dentistes <span className="text-primary">passionnés</span>
           </h2>
         </motion.div>
 
+        {/* Doctors */}
         <div className="mt-10 grid gap-6 sm:mt-16 sm:gap-8 md:grid-cols-2">
-          {team.map((member, i) => (
-            <motion.div key={member.name} initial={{ opacity: 1, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}>
+          {doctors.map((member, i) => (
+            <motion.div
+              key={member.name}
+              initial={{ opacity: 1, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
+            >
               <GlowCard glowColor="rgba(37, 99, 235, 0.6)" glowSize={280} borderRadius={24} borderWidth={2}>
                 <div className="group h-full bg-white/10 backdrop-blur-xl">
                   <div className="relative h-72 overflow-hidden sm:h-80">
@@ -71,6 +91,50 @@ export default function Team() {
                   </div>
                 </div>
               </GlowCard>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Assistants */}
+        <motion.div
+          initial={{ opacity: 1, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-12 text-center sm:mt-16"
+        >
+          <h3 className="text-lg font-bold text-foreground sm:text-xl">
+            Notre équipe au quotidien
+          </h3>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Des assistantes dévouées pour votre accueil et votre confort
+          </p>
+        </motion.div>
+
+        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
+          {assistants.map((person, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 1, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
+            >
+              <div
+                className="group overflow-hidden rounded-xl border border-white/20 bg-white/10 backdrop-blur-xl transition-all duration-500 hover:bg-white/18 hover:-translate-y-1 sm:rounded-2xl"
+                style={{ boxShadow: "0 4px 24px -6px rgba(0,0,0,0.06), inset 0 1px 1px rgba(255,255,255,0.3)" }}
+              >
+                <div className="relative aspect-[3/4] overflow-hidden">
+                  <Image
+                    src={person.image}
+                    alt={person.role}
+                    fill
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                </div>
+                <div className="p-3 text-center sm:p-4">
+                  <p className="text-xs font-semibold text-primary sm:text-sm">{person.role}</p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

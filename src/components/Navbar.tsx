@@ -145,7 +145,9 @@ export default function Navbar() {
               <span className="hidden xl:inline">+33 1 47 37 53 16</span>
             </a>
             <a
-              href="#contact"
+              href="https://www.doctolib.fr/cabinet-dentaire/levallois-perret/cabinet-dentaire-wilson/booking/motive-categories?telehealth=false&specialityId=1&placeId=practice-543908&pid=practice-543908&speciality_ids%5B%5D=1&source=deep_link"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-xl px-4 py-2 text-[13px] font-semibold text-white transition-all duration-300 hover:-translate-y-px"
               style={{
                 background: "rgba(37, 99, 235, 0.85)",
@@ -220,7 +222,9 @@ export default function Navbar() {
                 </a>
                 <div className="pt-1">
                   <a
-                    href="#contact"
+                    href="https://www.doctolib.fr/cabinet-dentaire/levallois-perret/cabinet-dentaire-wilson/booking/motive-categories?telehealth=false&specialityId=1&placeId=practice-543908&pid=practice-543908&speciality_ids%5B%5D=1&source=deep_link"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
                     className="block w-full rounded-xl py-3 text-center text-[15px] font-semibold text-white"
                     style={{

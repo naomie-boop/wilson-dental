@@ -56,7 +56,7 @@ export default function Hero() {
           </p>
 
           <div className="mt-6 flex flex-col items-center gap-3 sm:mt-10 sm:flex-row sm:gap-4 lg:justify-start">
-            <GlassButton href="#contact" variant="primary" size="lg">
+            <GlassButton href="https://www.doctolib.fr/cabinet-dentaire/levallois-perret/cabinet-dentaire-wilson/booking/motive-categories?telehealth=false&specialityId=1&placeId=practice-543908&pid=practice-543908&speciality_ids%5B%5D=1&source=deep_link" variant="primary" size="lg">
               Prendre rendez-vous
               <ArrowRight className="h-4 w-4" />
             </GlassButton>
