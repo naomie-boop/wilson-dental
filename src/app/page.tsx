@@ -8,11 +8,13 @@ import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import PageLoader from "@/components/PageLoader";
+import FluidGradient from "@/components/FluidGradient";
 
 export default function Home() {
   return (
     <>
       <PageLoader />
+      <FluidGradient />
       <Navbar />
       <Hero />
       <About />

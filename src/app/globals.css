@@ -19,8 +19,7 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, #e8eef5 0%, #dce4f0 30%, #e0e8f4 60%, #eaf0f7 100%);
-  background-attachment: fixed;
+  background: #e8eef5;
   color: var(--color-foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
 }
