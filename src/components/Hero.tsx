@@ -58,9 +58,9 @@ export default function Hero() {
             </GlowCard>
 
             <motion.div
-              animate={{ y: [0, -8, 0] }}
+              animate={{ y: [0, -6, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -right-2 -top-3 rounded-xl border border-white/30 bg-white/50 px-3 py-2 backdrop-blur-2xl sm:-right-4 sm:-top-4 sm:rounded-2xl sm:px-4 sm:py-2.5"
+              className="absolute right-3 top-3 rounded-xl border border-white/30 bg-white/60 px-3 py-2 backdrop-blur-2xl sm:right-4 sm:top-4 sm:rounded-2xl sm:px-4 sm:py-2.5"
               style={{ boxShadow: "0 8px 24px -6px rgba(0,0,0,0.1), inset 0 1px 1px rgba(255,255,255,0.4)" }}
             >
               <div className="flex items-center gap-2">
