@@ -108,6 +108,42 @@ export default function Contact() {
             </div>
           </motion.div>
         </div>
+
+        {/* Map */}
+        <motion.div
+          initial={{ opacity: 1, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-10 sm:mt-16"
+        >
+          <div
+            className="relative overflow-hidden rounded-2xl border border-white/20 sm:rounded-3xl"
+            style={{ boxShadow: "0 8px 32px -8px rgba(0,0,0,0.1), inset 0 1px 1px rgba(255,255,255,0.3)" }}
+          >
+            <div style={{ filter: "grayscale(1) invert(1) contrast(1.1) brightness(0.9)", WebkitFilter: "grayscale(1) invert(1) contrast(1.1) brightness(0.9)" }}>
+              <iframe
+                title="Wilson Dental - 57 rue du Président Wilson, Levallois-Perret"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=2.2828%2C48.8908%2C2.2928%2C48.8968&layer=mapnik&marker=48.8938%2C2.2878"
+                className="h-48 w-full sm:h-64 lg:h-80"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+            {/* Dark overlay for depth */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-white/5" />
+            {/* Glass label */}
+            <div
+              className="absolute bottom-4 left-4 flex items-center gap-2 rounded-xl border border-white/25 bg-white/30 px-4 py-2 backdrop-blur-xl sm:bottom-6 sm:left-6"
+              style={{ boxShadow: "0 4px 16px -4px rgba(0,0,0,0.1), inset 0 1px 1px rgba(255,255,255,0.3)" }}
+            >
+              <MapPin className="h-4 w-4 text-primary" />
+              <span className="text-xs font-semibold text-foreground sm:text-sm">
+                57 rue du Président Wilson, Levallois-Perret
+              </span>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
