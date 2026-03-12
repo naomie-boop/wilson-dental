@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 import ParallaxMarquee from "./ParallaxMarquee";
 
 const marqueeCards = [
-  { src: "/cabinet-reception.png", alt: "Accueil Wilson Dental", depth: 0, yOffset: -40 },
-  { src: "/cabinet-salle2.png", alt: "Salle de soins", depth: 80, yOffset: 50 },
-  { src: "/cabinet-attente.png", alt: "Salle d'attente", depth: -30, yOffset: -20 },
-  { src: "/cabinet-salle1.png", alt: "Consultation", depth: 60, yOffset: 70 },
-  { src: "/cabinet-carte.png", alt: "Carte de visite Wilson Dental", depth: -50, yOffset: -60 },
-  { src: "/hero-surgery.png", alt: "Équipe en soin", depth: 100, yOffset: 30 },
-  { src: "/cabinet-salle3.png", alt: "Fauteuil de soins", depth: 20, yOffset: -30 },
-  { src: "/cabinet-soin-detail.png", alt: "Soin dentaire de précision", depth: -40, yOffset: 60 },
+  { src: "/cabinet-reception.png", alt: "Accueil Wilson Dental", depth: 0, yOffset: -25 },
+  { src: "/cabinet-salle2.png", alt: "Salle de soins", depth: 60, yOffset: 35 },
+  { src: "/cabinet-attente.png", alt: "Salle d'attente", depth: -20, yOffset: -15 },
+  { src: "/cabinet-salle1.png", alt: "Consultation", depth: 40, yOffset: 45 },
+  { src: "/cabinet-carte.png", alt: "Carte de visite Wilson Dental", depth: -35, yOffset: -40 },
+  { src: "/hero-surgery.png", alt: "Équipe en soin", depth: 70, yOffset: 20 },
+  { src: "/cabinet-salle3.png", alt: "Fauteuil de soins", depth: 15, yOffset: -20 },
+  { src: "/cabinet-soin-detail.png", alt: "Soin dentaire de précision", depth: -25, yOffset: 40 },
 ];
 
 const anim = { initial: { y: 15 }, whileInView: { y: 0 }, viewport: { once: true, margin: "-50px" as const }, transition: { duration: 0.5 } };
@@ -36,11 +36,8 @@ export default function Cabinet() {
         <ParallaxMarquee
           cards={marqueeCards}
           speed={0.7}
-          cardWidth={240}
-          cardHeight={300}
-          gap={60}
           maxRotation={10}
-          borderRadius={20}
+          borderRadius={16}
         />
       </div>
     </section>

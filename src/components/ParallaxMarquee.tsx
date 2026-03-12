@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useMemo } from "react";
+import { useRef, useState, useMemo, useEffect } from "react";
 import { motion, useAnimationFrame } from "framer-motion";
 
 interface MarqueeCard {
@@ -13,9 +13,6 @@ interface MarqueeCard {
 interface ParallaxMarqueeProps {
   cards: MarqueeCard[];
   speed?: number;
-  cardWidth?: number;
-  cardHeight?: number;
-  gap?: number;
   maxRotation?: number;
   borderRadius?: number;
   className?: string;
@@ -24,15 +21,26 @@ interface ParallaxMarqueeProps {
 export default function ParallaxMarquee({
   cards,
   speed = 0.8,
-  cardWidth = 220,
-  cardHeight = 280,
-  gap = 80,
   maxRotation = 12,
   borderRadius = 16,
   className = "",
 }: ParallaxMarqueeProps) {
   const [offset, setOffset] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const cardWidth = isMobile ? 150 : 240;
+  const cardHeight = isMobile ? 190 : 300;
+  const gap = isMobile ? 30 : 60;
+  const depthFactor = isMobile ? 0.3 : 1;
+  const yFactor = isMobile ? 0.3 : 1;
 
   const totalWidth = useMemo(() => cards.length * (cardWidth + gap), [cards.length, cardWidth, gap]);
   const duped = useMemo(() => [...cards, ...cards, ...cards], [cards]);
@@ -48,14 +56,16 @@ export default function ParallaxMarquee({
     <div
       ref={containerRef}
       className={`relative w-full overflow-hidden ${className}`}
-      style={{ height: cardHeight + 200, perspective: 1200 }}
+      style={{ height: isMobile ? cardHeight + 80 : cardHeight + 160, perspective: 1200 }}
     >
       <div className="absolute inset-0 flex items-center">
         {duped.map((card, i) => {
           const x = i * (cardWidth + gap) - offset;
-          const depthScale = 1 + card.depth / 300;
-          const parallax = (card.depth / 100) * (offset * 0.3);
-          const rotY = ((x / totalWidth) * maxRotation * 2 - maxRotation) * (card.depth / 100);
+          const depth = card.depth * depthFactor;
+          const yOff = card.yOffset * yFactor;
+          const depthScale = 1 + depth / 300;
+          const parallax = (depth / 100) * (offset * 0.3);
+          const rotY = isMobile ? 0 : ((x / totalWidth) * maxRotation * 2 - maxRotation) * (depth / 100);
 
           return (
             <motion.div
@@ -65,7 +75,7 @@ export default function ParallaxMarquee({
                 width: cardWidth,
                 height: cardHeight,
                 left: x - parallax,
-                top: `calc(50% + ${card.yOffset}px)`,
+                top: `calc(50% + ${yOff}px)`,
                 transform: `translateY(-50%) scale(${depthScale}) rotateY(${rotY}deg)`,
                 transformStyle: "preserve-3d",
                 borderRadius,
