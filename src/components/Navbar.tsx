@@ -72,7 +72,7 @@ export default function Navbar() {
               className="flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               <Phone className="h-4 w-4" />
-              <span className="hidden xl:inline">01 47 37 53 16</span>
+              <span className="hidden xl:inline">+33 1 47 37 53 16</span>
             </a>
             <a
               href="#contact"
@@ -117,7 +117,7 @@ export default function Navbar() {
                 className="flex items-center gap-2 rounded-lg px-4 py-3 text-base font-medium text-muted-foreground"
               >
                 <Phone className="h-4 w-4" />
-                01 47 37 53 16
+                +33 1 47 37 53 16
               </a>
               <div className="pt-2">
                 <a

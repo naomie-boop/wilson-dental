@@ -7,39 +7,39 @@ import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 const testimonials = [
   {
     name: "Kenza A.",
-    date: "Août 2025",
+    date: "08/08/2025",
     rating: 5,
-    text: "Un grand merci au Dr Ohayon pour son professionnalisme ! C'est un dentiste vraiment minutieux, doux, à l'écoute et très pédagogue. Il prend le temps de tout expliquer et de rassurer. Je le recommande vivement !",
+    text: "Un grand merci au Dr Ohayon pour son professionnalisme ! C'est un dentiste vraiment minutieux, doux, à l'écoute et très pédagogue. Il prend le temps de tout expliquer et de rassurer, tout en étant très délicat dans ses gestes. Je suis ravie d'être tombée sur lui, j'ai enfin trouvé mon nouveau dentiste de confiance. Je le recommande vivement !",
   },
   {
     name: "Clara D.",
-    date: "Juillet 2025",
+    date: "28/07/2025",
     rating: 5,
-    text: "Je n'ai jamais été aussi satisfaite d'une visite chez le dentiste ! Depuis 2018, j'ai changé de dentiste pas moins de 7 fois. Je peux enfin dire que je ne changerai plus : le Dr Ohayon est doux, chaleureux, calme et extrêmement gentil.",
+    text: "Extra ! Je n'ai jamais été aussi satisfaite d'une visite chez le dentiste ! Depuis 2018, j'ai changé de dentiste pas moins de 7 fois, étant une grande trouillarde. Je peux enfin dire que je ne changerai plus : le Dr Ohayon est doux, chaleureux, calme et extrêmement gentil. Chaque acte est expliqué avec clarté, calme et bienveillance. On sent immédiatement la passion qu'il a pour son métier. Un très grand merci, et à bientôt !",
   },
   {
     name: "Karim K.",
-    date: "Juillet 2025",
+    date: "29/07/2025",
     rating: 5,
-    text: "Excellent à tout point de vue : accueil, soin, explications, temps d'attente, etc. Fortement recommandé !",
+    text: "Excellent à tout point de vue : accueil, soin, explications, temps d'attente, etc. Fortement recommandé.",
   },
   {
     name: "Ruth B.",
-    date: "Juillet 2025",
+    date: "23/07/2025",
     rating: 5,
-    text: "Le Dr David Ohayon est de loin le dentiste que tout le monde mérite d'avoir ! Allez-y les yeux fermés. De bons conseils, passionné et perfectionniste.",
-  },
-  {
-    name: "Raphael P.",
-    date: "Avril 2025",
-    rating: 5,
-    text: "Très bon dentiste. M'a retiré les dents de sagesse sans faire mal, bravo l'artiste !",
+    text: "Je mets un avis car il le mérite. Le Dr David Ohayon est de loin le dentiste que tout le monde mérite d'avoir ! Allez-y les yeux fermés. De bons conseils, passionné et perfectionniste. Il a eu la patience nécessaire pour arriver à la perfection.",
   },
   {
     name: "Claude G.",
-    date: "Mai 2025",
+    date: "22/05/2025",
     rating: 5,
     text: "Très bon accueil, diagnostic parfaitement expliqué et confiance pour la suite.",
+  },
+  {
+    name: "Raphael P.",
+    date: "07/04/2025",
+    rating: 5,
+    text: "Très bon dentiste. M'a retiré les dents de sagesse sans faire mal, bravo l'artiste !",
   },
 ];
 
@@ -49,12 +49,13 @@ export default function Testimonials() {
   const [current, setCurrent] = useState(0);
 
   const prev = () => setCurrent((c) => Math.max(0, c - 1));
-  const next = () => setCurrent((c) => Math.min(testimonials.length - 1, c + 1));
+  const next = () =>
+    setCurrent((c) => Math.min(testimonials.length - 1, c + 1));
 
   return (
     <section
       id="testimonials"
-      className="bg-gradient-to-b from-muted to-white py-16 sm:py-24 lg:py-32"
+      className="bg-white py-16 sm:py-24 lg:py-32"
     >
       <div ref={ref} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -68,11 +69,14 @@ export default function Testimonials() {
               Témoignages
             </span>
             <h2 className="mt-3 font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-              Ce que disent{" "}
+              Avis de{" "}
               <span className="text-primary">nos patients</span>
             </h2>
           </div>
-          <div className="flex gap-2">
+          <div className="flex items-center gap-2">
+            <span className="mr-2 text-xs text-muted-foreground">
+              Source : Google Reviews
+            </span>
             <button
               onClick={prev}
               disabled={current === 0}
@@ -106,7 +110,7 @@ export default function Testimonials() {
                 style={{ width: `${100 / testimonials.length}%` }}
                 className="flex-shrink-0"
               >
-                <div className="flex h-full flex-col rounded-xl border border-border bg-white p-5 transition-all hover:shadow-lg sm:rounded-2xl sm:p-8">
+                <div className="flex h-full flex-col rounded-xl border border-border bg-muted p-5 transition-all hover:shadow-lg sm:rounded-2xl sm:p-8">
                   <Quote className="h-6 w-6 text-primary/20 sm:h-8 sm:w-8" />
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:text-base">
                     &ldquo;{t.text}&rdquo;
@@ -121,7 +125,7 @@ export default function Testimonials() {
                           {t.name}
                         </div>
                         <div className="text-[10px] text-muted-foreground sm:text-xs">
-                          {t.date}
+                          {t.date} · Google
                         </div>
                       </div>
                     </div>
@@ -151,23 +155,6 @@ export default function Testimonials() {
             />
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.8 }}
-          className="mt-8 text-center sm:mt-10"
-        >
-          <a
-            href="https://g.page/r/wilson-dental/review"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-primary-dark"
-          >
-            Voir tous les avis sur Google
-            <span className="text-lg">→</span>
-          </a>
-        </motion.div>
       </div>
     </section>
   );

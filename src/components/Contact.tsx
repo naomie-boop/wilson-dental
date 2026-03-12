@@ -52,7 +52,7 @@ export default function Contact() {
                 {
                   icon: Phone,
                   label: "Téléphone",
-                  value: "01 47 37 53 16",
+                  value: "+33 1 47 37 53 16",
                   href: "tel:+33147375316",
                 },
                 {
@@ -64,7 +64,7 @@ export default function Contact() {
                 {
                   icon: Clock,
                   label: "Horaires",
-                  value: "Lun – Jeu : 9h–19h\nVendredi : 9h–18h",
+                  value: "Lundi – Jeudi : 9h–19h\nVendredi : 9h–18h\nSamedi & Dimanche : Fermé",
                 },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-3 sm:gap-4">

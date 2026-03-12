@@ -9,25 +9,23 @@ const team = [
   {
     name: "Dr. David Ohayon",
     role: "Chirurgien-Dentiste",
-    speciality: "Implantologie & Esthétique",
     image: "/dr-ohayon.png",
     description:
-      "Passionné et perfectionniste, le Dr Ohayon met son expertise au service de votre sourire avec douceur et bienveillance.",
+      "Minutieux, doux, à l'écoute et très pédagogue, le Dr Ohayon prend le temps de tout expliquer et de rassurer. Passionné et perfectionniste, il met son expertise au service de votre sourire.",
     traits: [
-      { icon: GraduationCap, label: "Université Paris Descartes" },
-      { icon: Heart, label: "Approche douce & pédagogue" },
-      { icon: Award, label: "15 ans d'expérience" },
+      { icon: GraduationCap, label: "Chirurgien-Dentiste diplômé" },
+      { icon: Heart, label: "Doux, chaleureux et pédagogue" },
+      { icon: Award, label: "Passionné et perfectionniste" },
     ],
   },
   {
-    name: "Dr. Associé",
-    role: "Chirurgien-Dentiste",
-    speciality: "Parodontologie & Soins conservateurs",
+    name: "Chirurgien-Dentiste",
+    role: "Associé",
     image: "/dr-2.png",
     description:
-      "Rigoureux et attentif, il apporte son savoir-faire en parodontologie et soins conservateurs pour une prise en charge globale de qualité.",
+      "Rigoureux et attentif, il complète l'équipe avec son savoir-faire pour une prise en charge globale et de qualité au cabinet Wilson Dental.",
     traits: [
-      { icon: GraduationCap, label: "Formation spécialisée" },
+      { icon: GraduationCap, label: "Chirurgien-Dentiste diplômé" },
       { icon: Microscope, label: "Précision & rigueur" },
       { icon: Heart, label: "Écoute attentive" },
     ],
@@ -39,7 +37,7 @@ export default function Team() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="team" className="bg-white py-16 sm:py-24 lg:py-32">
+    <section id="team" className="bg-muted py-16 sm:py-24 lg:py-32">
       <div ref={ref} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -51,13 +49,9 @@ export default function Team() {
             L&apos;Équipe
           </span>
           <h2 className="mt-3 font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-            Des praticiens{" "}
+            Des dentistes{" "}
             <span className="text-primary">passionnés</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
-            Notre équipe allie compétence technique et qualité humaine pour vous
-            offrir la meilleure expérience de soins possible.
-          </p>
         </motion.div>
 
         <div className="mt-10 grid gap-6 sm:mt-16 sm:gap-8 md:grid-cols-2">
@@ -82,9 +76,6 @@ export default function Team() {
                     {member.name}
                   </h3>
                   <p className="font-semibold text-primary">{member.role}</p>
-                  <p className="text-sm font-medium text-accent">
-                    {member.speciality}
-                  </p>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:text-base">
                     {member.description}
                   </p>

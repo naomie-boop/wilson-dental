@@ -2,35 +2,8 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Award, Users, Clock, Stethoscope } from "lucide-react";
+import { Stethoscope, Sparkles, Baby, Syringe } from "lucide-react";
 import Image from "next/image";
-
-const stats = [
-  {
-    icon: Award,
-    value: "15+",
-    label: "Années d'expertise",
-    description: "Au service de votre sourire",
-  },
-  {
-    icon: Users,
-    value: "5 000+",
-    label: "Patients fidèles",
-    description: "Qui nous font confiance",
-  },
-  {
-    icon: Clock,
-    value: "Lun–Ven",
-    label: "9h – 19h",
-    description: "Horaires étendus",
-  },
-  {
-    icon: Stethoscope,
-    value: "100%",
-    label: "Équipement digital",
-    description: "Technologie de pointe",
-  },
-];
 
 export default function About() {
   const ref = useRef(null);
@@ -46,17 +19,17 @@ export default function About() {
             transition={{ duration: 0.7 }}
           >
             <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-              À propos
+              À propos de nous
             </span>
             <h2 className="mt-3 font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-              Un cabinet pensé pour{" "}
-              <span className="text-primary">votre confort</span>
+              Des soins de{" "}
+              <span className="text-primary">haute qualité</span>
             </h2>
 
             <div className="relative my-6 overflow-hidden rounded-2xl lg:hidden">
               <Image
-                src="/cabinet-reception.png"
-                alt="Accueil du cabinet Wilson Dental"
+                src="/hero-surgery.png"
+                alt="L'équipe Wilson Dental en soin"
                 width={600}
                 height={340}
                 className="h-48 w-full object-cover sm:h-64"
@@ -64,16 +37,18 @@ export default function About() {
             </div>
 
             <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Situé au cœur de Levallois-Perret, Wilson Dental vous accueille
-              dans un espace moderne et apaisant. Notre équipe de
-              chirurgiens-dentistes passionnés combine expertise clinique et
-              technologies de dernière génération pour vous offrir des soins
-              personnalisés et de haute qualité.
+              Wilson Dental est fier de fournir des soins dentaires de haute
+              qualité avec les dernières avancées technologiques.
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              De la simple consultation à la chirurgie implantaire, chaque
-              patient bénéficie d&apos;un plan de traitement sur mesure et
-              d&apos;un accompagnement bienveillant à chaque étape.
+              Nos dentistes offrent une gamme complète de soins, allant de la
+              dentisterie pédiatrique à la chirurgie dentaire avancée.
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+              Wilson Dental est un cabinet dentaire libéral situé au 57 rue du
+              Président Wilson à Levallois-Perret. Nous offrons des soins
+              dentaires selon les dernières données acquises de la science dans
+              une atmosphère moderne et relaxante.
             </p>
 
             <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">
@@ -87,7 +62,7 @@ export default function About() {
                 href="#team"
                 className="rounded-full border border-border px-6 py-3 text-center text-sm font-semibold text-foreground transition-all hover:border-primary/30 hover:bg-primary-light/30"
               >
-                Rencontrer l&apos;équipe
+                Découvrir l&apos;équipe
               </a>
             </div>
           </motion.div>
@@ -98,25 +73,43 @@ export default function About() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="grid grid-cols-2 gap-3 sm:gap-4"
           >
-            {stats.map((stat, i) => (
+            {[
+              {
+                icon: Stethoscope,
+                title: "Dentisterie de pointe",
+                description: "Équipements et techniques de dernière génération",
+              },
+              {
+                icon: Sparkles,
+                title: "Experts en esthétique",
+                description: "Blanchiment, facettes, smile design",
+              },
+              {
+                icon: Baby,
+                title: "Soins pour enfants",
+                description: "Approche douce et adaptée aux plus jeunes",
+              },
+              {
+                icon: Syringe,
+                title: "Chirurgie avancée",
+                description: "Implants, greffes et chirurgie orale",
+              },
+            ].map((item, i) => (
               <motion.div
-                key={stat.label}
+                key={item.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
                 className="group rounded-xl border border-border bg-white p-4 transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 sm:rounded-2xl sm:p-6"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-light text-primary transition-colors group-hover:bg-primary group-hover:text-white sm:h-12 sm:w-12 sm:rounded-xl">
-                  <stat.icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                  <item.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
-                <div className="mt-3 text-xl font-bold text-foreground sm:mt-4 sm:text-2xl">
-                  {stat.value}
+                <div className="mt-3 text-sm font-bold text-foreground sm:mt-4 sm:text-base">
+                  {item.title}
                 </div>
-                <div className="text-xs font-semibold text-foreground sm:text-sm">
-                  {stat.label}
-                </div>
-                <div className="mt-0.5 text-[10px] text-muted-foreground sm:mt-1 sm:text-xs">
-                  {stat.description}
+                <div className="mt-0.5 text-[10px] leading-snug text-muted-foreground sm:mt-1 sm:text-xs">
+                  {item.description}
                 </div>
               </motion.div>
             ))}

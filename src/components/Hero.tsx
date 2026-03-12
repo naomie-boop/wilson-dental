@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Shield, Heart } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 
 export default function Hero() {
@@ -29,20 +29,19 @@ export default function Hero() {
             className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary-light/50 px-3 py-1.5 text-xs font-medium text-primary sm:mb-6 sm:px-4 sm:py-2 sm:text-sm"
           >
             <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-            Cabinet dentaire nouvelle génération
+            Cabinet dentaire à Levallois-Perret
           </motion.div>
 
           <h1 className="font-[family-name:var(--font-playfair)] text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-7xl">
-            Votre sourire,{" "}
+            Bienvenue au cabinet{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              notre passion
+              Wilson Dental
             </span>
           </h1>
 
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg lg:mx-0 lg:text-xl">
-            Des soins dentaires d&apos;excellence dans un environnement moderne
-            et apaisant. Technologie de pointe, approche humaine et
-            bienveillante.
+            Des dentistes passionnés prêts à vous offrir des soins avancés et
+            personnalisés. Ensemble, redonnons un sourire à vos dents.
           </p>
 
           <div className="mt-6 flex flex-col items-center gap-3 sm:mt-10 sm:flex-row sm:gap-4 lg:justify-start">
@@ -57,24 +56,8 @@ export default function Hero() {
               href="tel:+33147375316"
               className="flex w-full items-center justify-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-medium text-foreground transition-all hover:border-primary/30 hover:bg-primary-light/30 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
             >
-              01 47 37 53 16
+              +33 1 47 37 53 16
             </a>
-          </div>
-
-          <div className="mt-8 hidden items-center justify-center gap-6 sm:flex lg:justify-start lg:gap-8">
-            {[
-              { icon: Shield, text: "Soins garantis" },
-              { icon: Heart, text: "Approche douce" },
-              { icon: Sparkles, text: "Équipement dernier cri" },
-            ].map((item) => (
-              <div
-                key={item.text}
-                className="flex items-center gap-2 text-sm text-muted-foreground"
-              >
-                <item.icon className="h-4 w-4 text-primary" />
-                {item.text}
-              </div>
-            ))}
           </div>
         </motion.div>
 
@@ -88,36 +71,14 @@ export default function Hero() {
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 blur-2xl sm:rounded-3xl" />
             <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl">
               <Image
-                src="/hero-surgery.png"
-                alt="Dr Ohayon et son équipe en plein soin dentaire"
+                src="/cabinet-reception.png"
+                alt="Accueil du cabinet Wilson Dental à Levallois-Perret"
                 width={700}
                 height={500}
                 priority
                 className="h-[280px] w-full object-cover sm:h-[380px] lg:h-[460px]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-                  {[
-                    { value: "15+", label: "Ans d'expérience" },
-                    { value: "5000+", label: "Patients" },
-                    { value: "98%", label: "Satisfaction" },
-                    { value: "4.9★", label: "Google" },
-                  ].map((stat) => (
-                    <div
-                      key={stat.label}
-                      className="rounded-xl bg-white/90 px-3 py-2 text-center backdrop-blur-sm sm:px-4 sm:py-3"
-                    >
-                      <div className="text-lg font-bold text-primary sm:text-xl">
-                        {stat.value}
-                      </div>
-                      <div className="text-[10px] text-muted-foreground sm:text-xs">
-                        {stat.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
 
             <motion.div
@@ -128,7 +89,7 @@ export default function Hero() {
               <div className="flex items-center gap-2">
                 <div className="h-2.5 w-2.5 rounded-full bg-green-500 sm:h-3 sm:w-3" />
                 <span className="text-xs font-medium sm:text-sm">
-                  Créneaux disponibles
+                  Lun–Ven : 9h–19h
                 </span>
               </div>
             </motion.div>

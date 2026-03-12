@@ -2,63 +2,68 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import {
-  Smile,
-  Sparkles,
-  Baby,
-  HeartPulse,
-  Wrench,
-  ScanFace,
-} from "lucide-react";
+import { Wrench, Baby, HeartPulse, ScanFace } from "lucide-react";
 
 const services = [
   {
     icon: Wrench,
     title: "Soins Conservateurs",
     description:
-      "Caries, détartrage, endodontie, couronnes, inlays & onlays. Préservation maximale de vos dents naturelles.",
-    items: ["Traitement des caries", "Détartrage", "Endodontie", "Couronnes"],
+      "Préservez un sourire sain et évitez les problèmes dentaires. Nous proposons des soins pour traiter et prévenir l'apparition de caries et autres pathologies bucco-dentaires.",
+    items: [
+      "Orthèse d'Avancée Mandibulaire",
+      "Traitement des Caries",
+      "Détartrage Professionnel",
+      "Endodontie",
+      "Couronnes Dentaires",
+      "Inlays & Onlays",
+      "Éclaircissement Dentaire",
+    ],
     gradient: "from-blue-500 to-blue-600",
-  },
-  {
-    icon: Sparkles,
-    title: "Esthétique Dentaire",
-    description:
-      "Éclaircissement, facettes, alignement. Retrouvez le sourire dont vous avez toujours rêvé.",
-    items: ["Blanchiment", "Facettes céramiques", "Aligneurs", "Smile design"],
-    gradient: "from-violet-500 to-purple-600",
   },
   {
     icon: Baby,
     title: "Dentisterie Pédiatrique",
     description:
-      "Première visite, prévention, soins adaptés aux enfants dans un environnement rassurant.",
-    items: ["Première visite", "Fluoration", "Scellement sillons", "Orthodontie enfant"],
+      "Des soins dentaires adaptés aux enfants et adolescents dans un environnement rassurant et bienveillant.",
+    items: [
+      "Première Visite de l'Enfant",
+      "Prévention & Fluoration",
+      "Scellement des Sillons",
+      "Soins des Dents de Lait",
+      "Orthodontie Enfant & Ado",
+    ],
     gradient: "from-pink-500 to-rose-600",
   },
   {
     icon: HeartPulse,
     title: "Parodontologie",
     description:
-      "Diagnostic et traitement des maladies des gencives. Greffes gingivales et chirurgie parodontale.",
-    items: ["Bilan parodontal", "Gingivite", "Chirurgie parodontale", "Greffes gingivales"],
+      "Diagnostic et traitement des maladies des gencives pour préserver la santé de votre bouche sur le long terme.",
+    items: [
+      "Bilan Parodontal",
+      "Surfaçage Radiculaire",
+      "Traitement de la Gingivite",
+      "Traitement de la Parodontite",
+      "Chirurgie Parodontale",
+      "Greffes Gingivales",
+    ],
     gradient: "from-red-500 to-red-600",
   },
   {
     icon: ScanFace,
-    title: "Implantologie",
+    title: "Chirurgie & Implantologie",
     description:
-      "Implants dentaires, greffes osseuses, prothèses sur implants. Retrouvez une dentition complète.",
-    items: ["Implants dentaires", "Greffes osseuses", "Sinus lift", "Prothèses sur implants"],
+      "Retrouvez une dentition complète grâce à notre expertise en implantologie et en chirurgie orale avancée.",
+    items: [
+      "Implants Dentaires",
+      "Greffes Osseuses",
+      "Extractions & Dents de Sagesse",
+      "Chirurgie Pré-implantaire",
+      "Prothèses sur Implants",
+      "Sinus Lift",
+    ],
     gradient: "from-emerald-500 to-emerald-600",
-  },
-  {
-    icon: Smile,
-    title: "Chirurgie Orale",
-    description:
-      "Extractions complexes, dents de sagesse, chirurgie pré-implantaire. Expertise et douceur.",
-    items: ["Dents de sagesse", "Extractions", "Chirurgie pré-implantaire", "Régénération osseuse"],
-    gradient: "from-amber-500 to-orange-600",
   },
 ];
 
@@ -67,7 +72,7 @@ export default function Services() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" className="bg-muted py-16 sm:py-24 lg:py-32">
+    <section id="services" className="bg-white py-16 sm:py-24 lg:py-32">
       <div ref={ref} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -76,19 +81,15 @@ export default function Services() {
           className="text-center"
         >
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-            Nos Soins
+            Les Soins
           </span>
           <h2 className="mt-3 font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
             Des soins adaptés à{" "}
-            <span className="text-primary">chaque besoin</span>
+            <span className="text-primary">vos besoins</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
-            Notre équipe maîtrise l&apos;ensemble des disciplines dentaires pour
-            une prise en charge complète et de qualité.
-          </p>
         </motion.div>
 
-        <div className="mt-10 grid gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-6">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
