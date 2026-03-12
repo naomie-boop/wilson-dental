@@ -11,6 +11,7 @@ const marqueeCards = [
   { src: "/cabinet-carte.png", alt: "Carte de visite Wilson Dental", depth: -50, yOffset: -60 },
   { src: "/hero-surgery.png", alt: "Équipe en soin", depth: 100, yOffset: 30 },
   { src: "/cabinet-salle3.png", alt: "Fauteuil de soins", depth: 20, yOffset: -30 },
+  { src: "/cabinet-soin-detail.png", alt: "Soin dentaire de précision", depth: -40, yOffset: 60 },
 ];
 
 const anim = { initial: { y: 15 }, whileInView: { y: 0 }, viewport: { once: true, margin: "-50px" as const }, transition: { duration: 0.5 } };
