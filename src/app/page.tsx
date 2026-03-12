@@ -28,8 +28,8 @@ export default function Home() {
         speed={1.3}
       />
       <Services />
-      <Cabinet />
       <Team />
+      <Cabinet />
       <Testimonials />
       <Contact />
       <DoctorNote />

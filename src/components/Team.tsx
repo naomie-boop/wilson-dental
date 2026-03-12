@@ -57,9 +57,10 @@ function FlipCard({ doc, index }: { doc: typeof doctors[0]; index: number }) {
       whileInView={{ y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.4, delay: index * 0.08 }}
-      className="cursor-pointer"
       style={{ perspective: 1000 }}
-      onClick={() => setFlipped(!flipped)}
+      onMouseEnter={() => setFlipped(true)}
+      onMouseLeave={() => setFlipped(false)}
+      onTouchStart={() => setFlipped((f) => !f)}
     >
       <div
         className="relative h-[380px] sm:h-[420px]"
@@ -78,7 +79,7 @@ function FlipCard({ doc, index }: { doc: typeof doctors[0]; index: number }) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-4">
             <h3 className="text-base font-bold text-white sm:text-lg">{doc.name}</h3>
-            <p className="text-xs text-white/70">Cliquez pour voir le détail</p>
+            <p className="text-xs text-white/70">Survolez pour voir le détail</p>
           </div>
         </div>
 
@@ -112,7 +113,7 @@ function FlipCard({ doc, index }: { doc: typeof doctors[0]; index: number }) {
             </div>
           )}
 
-          <p className="mt-auto pt-4 text-[10px] text-muted-foreground/60">Cliquez pour revenir</p>
+          <p className="mt-auto pt-4 text-[10px] text-muted-foreground/60"></p>
         </div>
       </div>
     </motion.div>
@@ -131,7 +132,7 @@ export default function Team() {
             Nos <span className="text-primary">praticiens</span>
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
-            Cliquez sur un praticien pour découvrir son parcours et ses spécialités.
+            Survolez un praticien pour découvrir son parcours et ses spécialités.
           </p>
         </motion.div>
 
